@@ -191,6 +191,36 @@ h1 {
   color: white;
 }
 
+.btn-restart-happy {
+  background-color: var(--color-error);
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.btn-restart-happy:hover {
+  background-color: hsl(0deg 70% 40%);
+}
+
+.btn-restart-sad {
+  background-color: var(--color-success);
+  padding: 0.5rem;
+  margin-top: 0.8rem;
+  border-radius: 0.5rem;
+}
+
+.btn-restart-sad:hover {
+  background-color: hsl(150deg 70% 20%);
+}
+
+.btn-restart-happy {
+  background-color: var(--color-error);
+  padding: 0.5rem;
+  margin-top: 0.8rem;
+  border-radius: 0.5rem;
+}
+
+
 .visually-hidden {
   position: absolute;
   overflow: hidden;

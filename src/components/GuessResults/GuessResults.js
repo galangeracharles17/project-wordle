@@ -6,7 +6,7 @@ import { NUM_OF_GUESSES_ALLOWED } from '../../constants.js'; //value = 6
 import Guess from '../Guess/Guess.js';
 
 function GuessResults({ guess, answer }) {
-  // Each element in array will create a new paragraph (with guess value)
+  // Each element in array will create a new row (with guess value)
 
   return (
     <div className='guess-results'>
