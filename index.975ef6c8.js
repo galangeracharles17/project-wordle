@@ -27239,14 +27239,14 @@ var _wonBannerDefault = parcelHelpers.interopDefault(_wonBanner);
 var _lostBanner = require("../LostBanner");
 var _lostBannerDefault = parcelHelpers.interopDefault(_lostBanner);
 var _s = $RefreshSig$();
-// Pick a random word on every pageload.
-const answer = (0, _utils.sample)((0, _data.WORDS));
-// To make debugging easier, we'll log the solution in the console.
-console.info({
-    answer
-});
 function Game() {
     _s();
+    // Pick a random word on every pageload.
+    const [answer, setAnswer] = (0, _reactDefault.default).useState(()=>(0, _utils.sample)((0, _data.WORDS)));
+    // To make debugging easier, we'll log the solution in the console.
+    console.info({
+        answer
+    });
     // Make an useState array to loop on GuessResults Component
     const [guess, setGuess] = (0, _reactDefault.default).useState([]);
     // It will handle the guess items on GuessInput Component and will create a brand new array
@@ -27261,6 +27261,11 @@ function Game() {
         else if (nextGuess.length >= (0, _constantsJs.NUM_OF_GUESSES_ALLOWED)) setGameStatus("lost");
         setGuess(nextGuess);
     };
+    const handleRestart = ()=>{
+        setAnswer((0, _utils.sample)((0, _data.WORDS)));
+        setGuess([]);
+        setGameStatus("running");
+    };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _guessResultsDefault.default), {
@@ -27268,7 +27273,7 @@ function Game() {
                 answer: answer
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 39,
+                lineNumber: 45,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _guessInputDefault.default), {
@@ -27276,27 +27281,29 @@ function Game() {
                 gameStatus: gameStatus
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 40,
+                lineNumber: 46,
                 columnNumber: 7
             }, this),
             gameStatus === "won" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _wonBannerDefault.default), {
-                answer: guess.length
+                answer: guess.length,
+                handleRestart: handleRestart
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 42,
-                columnNumber: 32
+                lineNumber: 49,
+                columnNumber: 9
             }, this),
             gameStatus === "lost" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _lostBannerDefault.default), {
-                answer: answer
+                answer: answer,
+                handleRestart: handleRestart
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 43,
-                columnNumber: 33
+                lineNumber: 52,
+                columnNumber: 9
             }, this)
         ]
     }, void 0, true);
 }
-_s(Game, "71GRsk6hlx+yrPtt704CsE2+Oj0=");
+_s(Game, "tyHHsE97FRiyjz0aa+HXiPjUBq4=");
 _c = Game;
 exports.default = Game;
 var _c;
@@ -27409,7 +27416,108 @@ const WORDS = [
     "ROYAL",
     "HONEY",
     "FLAKE",
-    "SOUND"
+    "SOUND",
+    //Additional Data
+    "ABODE",
+    "ALIVE",
+    "BACON",
+    "BLAZE",
+    "BONGO",
+    "BRINE",
+    "COCOA",
+    "DANCE",
+    "DIARY",
+    "DOZEN",
+    "ELITE",
+    "EMBER",
+    "FAIRY",
+    "FLUKE",
+    "GLINT",
+    "GRIME",
+    "HELLO",
+    "IRATE",
+    "JOLLY",
+    "JOUST",
+    "KIWI",
+    "KNITS",
+    "LUNAR",
+    "MANGO",
+    "MAPLE",
+    "NIFTY",
+    "NURSE",
+    "OLIVE",
+    "OPERA",
+    "PEONY",
+    "PLUSH",
+    "PLUCK",
+    "PRIME",
+    "QUIET",
+    "QUILT",
+    "RADAR",
+    "RAVEN",
+    "SAVOR",
+    "SHINY",
+    "TOAST",
+    "TULIP",
+    "UNIFY",
+    "USING",
+    "VEXED",
+    "WALTZ",
+    "WATCH",
+    "XANAX",
+    "YARNS",
+    "YIELD",
+    "ZEBRA",
+    "ZESTY",
+    "AGILE",
+    "BRAID",
+    "CHARM",
+    "CLOUD",
+    "DRAKE",
+    "DREAM",
+    "EMOTE",
+    "FABLE",
+    "GRAPE",
+    "HYMNS",
+    "IMAGE",
+    "INCLU",
+    "KARMA",
+    "LOTUS",
+    "MAGIC",
+    "MURAL",
+    "NEXUS",
+    "NOISE",
+    "OVALS",
+    "PEACH",
+    "RADAR",
+    "QUIRK",
+    "RANGE",
+    "RAVEL",
+    "RIVER",
+    "SALSA",
+    "SPICE",
+    "TIDAL",
+    "ULTRA",
+    "VAPOR",
+    "WHARF",
+    "XENON",
+    "YACHT",
+    "ZILCH",
+    "ABUZZ",
+    "BLISS",
+    "CHIRP",
+    "DEIFY",
+    "EXALT",
+    "FAIRY",
+    "GRAIL",
+    "HASTY",
+    "INERT",
+    "JIFFY",
+    "KNACK",
+    "LURCH",
+    "MERRY",
+    "NEXUS",
+    "OPTIC"
 ];
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3huJa":[function(require,module,exports) {
@@ -27662,7 +27770,7 @@ var _constantsJs = require("../../constants.js"); //value = 6
 var _guessJs = require("../Guess/Guess.js");
 var _guessJsDefault = parcelHelpers.interopDefault(_guessJs);
 function GuessResults({ guess , answer  }) {
-    // Each element in array will create a new paragraph (with guess value)
+    // Each element in array will create a new row (with guess value)
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "guess-results",
         children: (0, _utilsJs.range)((0, _constantsJs.NUM_OF_GUESSES_ALLOWED)).map((num)=>// Capture the guess array element
@@ -27810,9 +27918,11 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _banner = require("../Banner");
 var _bannerDefault = parcelHelpers.interopDefault(_banner);
-function WonBanner({ answer  }) {
+function WonBanner({ answer , handleRestart  }) {
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _bannerDefault.default), {
         status: "happy",
+        action: handleRestart,
+        actionText: "Restart Game",
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
@@ -27874,14 +27984,33 @@ parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
-function Banner({ status , children  }) {
+function Banner({ status , children , action , actionText  }) {
+    const StatusButton = ()=>{
+        const className = status === "happy" ? "btn-restart-happy" : "btn-restart-sad";
+        return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
+            className: className,
+            onClick: action,
+            children: actionText
+        }, void 0, false, {
+            fileName: "src/components/Banner/Banner.js",
+            lineNumber: 9,
+            columnNumber: 7
+        }, this);
+    };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: `${status} banner`,
-        children: children
-    }, void 0, false, {
+        children: [
+            children,
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(StatusButton, {}, void 0, false, {
+                fileName: "src/components/Banner/Banner.js",
+                lineNumber: 17,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true, {
         fileName: "src/components/Banner/Banner.js",
-        lineNumber: 4,
-        columnNumber: 10
+        lineNumber: 15,
+        columnNumber: 5
     }, this);
 }
 _c = Banner;
@@ -27916,9 +28045,11 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _banner = require("../Banner");
 var _bannerDefault = parcelHelpers.interopDefault(_banner);
-function LostBanner({ answer  }) {
+function LostBanner({ answer , handleRestart  }) {
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _bannerDefault.default), {
         status: "sad",
+        action: handleRestart,
+        actionText: "Restart Game",
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
             children: [
                 "Sorry, the correct answer is ",

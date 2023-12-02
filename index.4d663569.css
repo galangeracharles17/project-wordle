@@ -179,6 +179,28 @@ h1 {
   color: #fff;
 }
 
+.btn-restart-happy:hover {
+  background-color: #ad1f1f;
+}
+
+.btn-restart-sad {
+  background-color: var(--color-success);
+  border-radius: .5rem;
+  margin-top: .8rem;
+  padding: .5rem;
+}
+
+.btn-restart-sad:hover {
+  background-color: #0f5733;
+}
+
+.btn-restart-happy {
+  background-color: var(--color-error);
+  border-radius: .5rem;
+  margin-top: .8rem;
+  padding: .5rem;
+}
+
 .visually-hidden {
   clip: rect(0 0 0 0);
   border: 0;
@@ -215,6 +237,12 @@ h1 {
 
   to {
     transform: translateY(0%);
+  }
+}
+
+@media only screen and (width <= 322px) {
+  .cell {
+    font-size: 1rem;
   }
 }
 
