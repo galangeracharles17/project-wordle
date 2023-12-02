@@ -27238,6 +27238,10 @@ var _wonBanner = require("../WonBanner");
 var _wonBannerDefault = parcelHelpers.interopDefault(_wonBanner);
 var _lostBanner = require("../LostBanner");
 var _lostBannerDefault = parcelHelpers.interopDefault(_lostBanner);
+var _timerSelection = require("../TimerSelection");
+var _timerSelectionDefault = parcelHelpers.interopDefault(_timerSelection);
+var _timer = require("../Timer");
+var _timerDefault = parcelHelpers.interopDefault(_timer);
 var _s = $RefreshSig$();
 function Game() {
     _s();
@@ -27265,23 +27269,44 @@ function Game() {
         setAnswer((0, _utils.sample)((0, _data.WORDS)));
         setGuess([]);
         setGameStatus("running");
+        setTimer("");
     };
+    //Lift the state time from TimerSelection
+    const [timer, setTimer] = (0, _reactDefault.default).useState("");
+    console.log(timer, "timer1");
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _timerSelectionDefault.default), {
+                timer: timer,
+                setTimer: setTimer,
+                handleRestart: handleRestart
+            }, void 0, false, {
+                fileName: "src/components/Game/Game.js",
+                lineNumber: 51,
+                columnNumber: 7
+            }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _guessResultsDefault.default), {
                 guess: guess,
                 answer: answer
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 45,
+                lineNumber: 57,
                 columnNumber: 7
             }, this),
+            timer ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _timerDefault.default), {
+                timer: timer,
+                setTimer: setTimer
+            }, void 0, false, {
+                fileName: "src/components/Game/Game.js",
+                lineNumber: 59,
+                columnNumber: 16
+            }, this) : null,
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _guessInputDefault.default), {
                 handleAddGuess: handleAddGuess,
                 gameStatus: gameStatus
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 46,
+                lineNumber: 61,
                 columnNumber: 7
             }, this),
             gameStatus === "won" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _wonBannerDefault.default), {
@@ -27289,21 +27314,31 @@ function Game() {
                 handleRestart: handleRestart
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 49,
+                lineNumber: 64,
                 columnNumber: 9
             }, this),
             gameStatus === "lost" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _lostBannerDefault.default), {
                 answer: answer,
-                handleRestart: handleRestart
+                handleRestart: handleRestart,
+                textStatus: "Sorry, the correct answer is"
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 52,
+                lineNumber: 67,
+                columnNumber: 9
+            }, this),
+            timer !== 0 ? null : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _lostBannerDefault.default), {
+                answer: answer,
+                handleRestart: handleRestart,
+                textStatus: "Sorry, times up! The correct answer is"
+            }, void 0, false, {
+                fileName: "src/components/Game/Game.js",
+                lineNumber: 75,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true);
 }
-_s(Game, "tyHHsE97FRiyjz0aa+HXiPjUBq4=");
+_s(Game, "rY232xnonOnPZBKxufEm0f3S7HY=");
 _c = Game;
 exports.default = Game;
 var _c;
@@ -27314,7 +27349,7 @@ $RefreshReg$(_c, "Game");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../../utils":"en4he","../../data":"9kapS","../../constants.js":"3huJa","../GuessInput":"7KsIF","../GuessResults":"kxxIc","../WonBanner":"isERa","../LostBanner":"5Kimf","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"en4he":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../../utils":"en4he","../../data":"9kapS","../../constants.js":"3huJa","../GuessInput":"7KsIF","../GuessResults":"kxxIc","../WonBanner":"isERa","../LostBanner":"5Kimf","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../Timer":"bVMmE","../TimerSelection":"3rxNv"}],"en4he":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "sample", ()=>sample);
@@ -28045,20 +28080,21 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _banner = require("../Banner");
 var _bannerDefault = parcelHelpers.interopDefault(_banner);
-function LostBanner({ answer , handleRestart  }) {
+function LostBanner({ answer , handleRestart , textStatus  }) {
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _bannerDefault.default), {
         status: "sad",
         action: handleRestart,
         actionText: "Restart Game",
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
             children: [
-                "Sorry, the correct answer is ",
+                textStatus,
+                " ",
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
                     children: answer
                 }, void 0, false, {
                     fileName: "src/components/LostBanner/LostBanner.js",
                     lineNumber: 8,
-                    columnNumber: 38
+                    columnNumber: 22
                 }, this),
                 "."
             ]
@@ -28083,7 +28119,176 @@ $RefreshReg$(_c, "LostBanner");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../Banner":"hcH4r","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"cxSZo":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../Banner":"hcH4r","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"bVMmE":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>(0, _timerDefault.default));
+var _timer = require("./Timer");
+parcelHelpers.exportAll(_timer, exports);
+var _timerDefault = parcelHelpers.interopDefault(_timer);
+
+},{"./Timer":"1DpMG","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1DpMG":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$9fbe = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$9fbe.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _s = $RefreshSig$();
+function Timer({ timer , setTimer  }) {
+    _s();
+    console.log(timer, "timer2");
+    (0, _reactDefault.default).useEffect(()=>{
+        if (timer > 0) {
+            const timerId = setTimeout(()=>{
+                const nextTimer = timer - 1;
+                setTimer(nextTimer);
+            }, 1000);
+            return ()=>clearTimeout(timerId);
+        }
+    }, [
+        timer
+    ]);
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "timer",
+        children: timer
+    }, void 0, false, {
+        fileName: "src/components/Timer/Timer.js",
+        lineNumber: 15,
+        columnNumber: 10
+    }, this);
+}
+_s(Timer, "OD7bBpZva5O2jO+Puf00hKivP7c=");
+_c = Timer;
+exports.default = Timer;
+var _c;
+$RefreshReg$(_c, "Timer");
+
+  $parcel$ReactRefreshHelpers$9fbe.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"3rxNv":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>(0, _timerSelectionDefault.default));
+var _timerSelection = require("./TimerSelection");
+parcelHelpers.exportAll(_timerSelection, exports);
+var _timerSelectionDefault = parcelHelpers.interopDefault(_timerSelection);
+
+},{"./TimerSelection":"QCZIs","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"QCZIs":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$d34c = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$d34c.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+function TimerSelection({ timer , setTimer , handleRestart  }) {
+    const timerValue = [
+        {
+            value: 5,
+            timer: "30 Seconds"
+        },
+        {
+            value: 60,
+            timer: "1 Minute"
+        },
+        {
+            value: 120,
+            timer: "2 Minute"
+        },
+        {
+            value: 180,
+            timer: "3 Minute"
+        },
+        {
+            value: "",
+            timer: "Cancel"
+        }
+    ];
+    console.log(timer);
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("fieldset", {
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("legend", {
+                    children: "Timer Selection"
+                }, void 0, false, {
+                    fileName: "src/components/TimerSelection/TimerSelection.js",
+                    lineNumber: 15,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("select", {
+                    id: "timerSelection",
+                    name: "timer",
+                    value: timer,
+                    onChange: (event)=>{
+                        handleRestart();
+                        return setTimer(event.target.value);
+                    },
+                    children: [
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
+                            value: "",
+                            children: "--Select Timer--"
+                        }, void 0, false, {
+                            fileName: "src/components/TimerSelection/TimerSelection.js",
+                            lineNumber: 25,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("optgroup", {
+                            label: "Timer",
+                            children: timerValue.map(({ value , timer  })=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
+                                    value: value,
+                                    children: timer
+                                }, crypto.randomUUID(), false, {
+                                    fileName: "src/components/TimerSelection/TimerSelection.js",
+                                    lineNumber: 28,
+                                    columnNumber: 15
+                                }, this))
+                        }, void 0, false, {
+                            fileName: "src/components/TimerSelection/TimerSelection.js",
+                            lineNumber: 26,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "src/components/TimerSelection/TimerSelection.js",
+                    lineNumber: 16,
+                    columnNumber: 9
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "src/components/TimerSelection/TimerSelection.js",
+            lineNumber: 14,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
+        fileName: "src/components/TimerSelection/TimerSelection.js",
+        lineNumber: 13,
+        columnNumber: 5
+    }, this);
+}
+_c = TimerSelection;
+exports.default = TimerSelection;
+var _c;
+$RefreshReg$(_c, "TimerSelection");
+
+  $parcel$ReactRefreshHelpers$d34c.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"cxSZo":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>(0, _headerDefault.default));
