@@ -2,7 +2,7 @@ import React from 'react';
 
 function TimerSelection({ timer, setTimer, handleRestart }) {
   const timerValue = [
-    { value: 5, timer: '30 Seconds' },
+    { value: 30, timer: '30 Seconds' },
     { value: 60, timer: '1 Minute' },
     { value: 120, timer: '2 Minute' },
     { value: 180, timer: '3 Minute' },
