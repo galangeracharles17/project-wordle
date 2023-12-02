@@ -10,6 +10,9 @@ import GuessResults from '../GuessResults';
 import WonBanner from '../WonBanner';
 import LostBanner from '../LostBanner';
 
+import TimerSelection from '../TimerSelection';
+import Timer from '../Timer';
+
 function Game() {
   // Pick a random word on every pageload.
   const [answer, setAnswer] = React.useState(() => sample(WORDS));
@@ -38,18 +41,42 @@ function Game() {
     setAnswer(sample(WORDS));
     setGuess([]);
     setGameStatus('running');
+    setTimer('');
   };
-
+  //Lift the state time from TimerSelection
+  const [timer, setTimer] = React.useState('');
+  console.log(timer, 'timer1');
   return (
     <>
+      <TimerSelection
+        timer={timer}
+        setTimer={setTimer}
+        handleRestart={handleRestart}
+      />
+
       <GuessResults guess={guess} answer={answer} />
+
+      {timer ? <Timer timer={timer} setTimer={setTimer} /> : null}
+
       <GuessInput handleAddGuess={handleAddGuess} gameStatus={gameStatus} />
 
       {gameStatus === 'won' && (
         <WonBanner answer={guess.length} handleRestart={handleRestart} />
       )}
       {gameStatus === 'lost' && (
-        <LostBanner answer={answer} handleRestart={handleRestart} />
+        <LostBanner
+          answer={answer}
+          handleRestart={handleRestart}
+          textStatus='Sorry, the correct answer is'
+        />
+      )}
+
+      {timer !== 0 ? null : (
+        <LostBanner
+          answer={answer}
+          handleRestart={handleRestart}
+          textStatus='Sorry, times up! The correct answer is'
+        />
       )}
     </>
   );
