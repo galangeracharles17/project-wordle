@@ -28197,7 +28197,7 @@ var _reactDefault = parcelHelpers.interopDefault(_react);
 function TimerSelection({ timer , setTimer , handleRestart  }) {
     const timerValue = [
         {
-            value: 5,
+            value: 30,
             timer: "30 Seconds"
         },
         {
