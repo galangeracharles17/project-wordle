@@ -27273,7 +27273,6 @@ function Game() {
     };
     //Lift the state time from TimerSelection
     const [timer, setTimer] = (0, _reactDefault.default).useState("");
-    console.log(timer, "timer1");
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _timerSelectionDefault.default), {
@@ -27295,26 +27294,28 @@ function Game() {
             }, this),
             timer ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _timerDefault.default), {
                 timer: timer,
-                setTimer: setTimer
+                setTimer: setTimer,
+                gameStatus: gameStatus
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 59,
-                columnNumber: 16
+                lineNumber: 60,
+                columnNumber: 9
             }, this) : null,
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _guessInputDefault.default), {
                 handleAddGuess: handleAddGuess,
                 gameStatus: gameStatus
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 61,
+                lineNumber: 63,
                 columnNumber: 7
             }, this),
             gameStatus === "won" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _wonBannerDefault.default), {
                 answer: guess.length,
-                handleRestart: handleRestart
+                handleRestart: handleRestart,
+                timer: timer
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 64,
+                lineNumber: 66,
                 columnNumber: 9
             }, this),
             gameStatus === "lost" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _lostBannerDefault.default), {
@@ -27323,16 +27324,25 @@ function Game() {
                 textStatus: "Sorry, the correct answer is"
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 67,
+                lineNumber: 73,
                 columnNumber: 9
             }, this),
             timer !== 0 ? null : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _lostBannerDefault.default), {
                 answer: answer,
                 handleRestart: handleRestart,
-                textStatus: "Sorry, times up! The correct answer is"
+                textStatus: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                    children: [
+                        "Sorry,",
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
+                            children: " time's up!"
+                        }, void 0, false, void 0, void 0),
+                        " ",
+                        "The correct answer is"
+                    ]
+                }, void 0, true)
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 75,
+                lineNumber: 81,
                 columnNumber: 9
             }, this)
         ]
@@ -27349,7 +27359,7 @@ $RefreshReg$(_c, "Game");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../../utils":"en4he","../../data":"9kapS","../../constants.js":"3huJa","../GuessInput":"7KsIF","../GuessResults":"kxxIc","../WonBanner":"isERa","../LostBanner":"5Kimf","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../Timer":"bVMmE","../TimerSelection":"3rxNv"}],"en4he":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../../utils":"en4he","../../data":"9kapS","../../constants.js":"3huJa","../GuessInput":"7KsIF","../GuessResults":"kxxIc","../WonBanner":"isERa","../LostBanner":"5Kimf","../TimerSelection":"3rxNv","../Timer":"bVMmE","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"en4he":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "sample", ()=>sample);
@@ -27953,7 +27963,23 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _banner = require("../Banner");
 var _bannerDefault = parcelHelpers.interopDefault(_banner);
-function WonBanner({ answer , handleRestart  }) {
+function WonBanner({ answer , handleRestart , timer  }) {
+    function formatNumber(num) {
+        if (Number.isInteger(num)) return num.toString(); // Return integer as a string
+        else return num.toFixed(2); // Return number with two decimal places as a string
+    }
+    const handleTimer = ()=>{
+        if (timer < 30) return `${30 - timer} seconds`;
+        else if (timer <= 60) return `${60 - timer} seconds`;
+        else if (timer <= 180) {
+            let ifTime = 180 - timer;
+            if (ifTime <= 59) return `${ifTime} seconds`;
+            if (ifTime <= 180) {
+                if (formatNumber(ifTime / 60) === 1) return `${formatNumber(ifTime / 60)} minute`;
+                return `${formatNumber(ifTime / 60)} minutes`;
+            }
+        }
+    };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _bannerDefault.default), {
         status: "happy",
         action: handleRestart,
@@ -27964,7 +27990,7 @@ function WonBanner({ answer , handleRestart  }) {
                     children: "Congratulations!"
                 }, void 0, false, {
                     fileName: "src/components/WonBanner/WonBanner.js",
-                    lineNumber: 8,
+                    lineNumber: 38,
                     columnNumber: 9
                 }, this),
                 " Got it in",
@@ -27973,19 +27999,22 @@ function WonBanner({ answer , handleRestart  }) {
                     children: answer === 1 ? "1 guess" : `${answer} guesses`
                 }, void 0, false, {
                     fileName: "src/components/WonBanner/WonBanner.js",
-                    lineNumber: 9,
+                    lineNumber: 39,
                     columnNumber: 9
                 }, this),
+                " and in",
+                " ",
+                handleTimer(),
                 "."
             ]
         }, void 0, true, {
             fileName: "src/components/WonBanner/WonBanner.js",
-            lineNumber: 7,
+            lineNumber: 37,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "src/components/WonBanner/WonBanner.js",
-        lineNumber: 6,
+        lineNumber: 36,
         columnNumber: 5
     }, this);
 }
@@ -28119,62 +28148,7 @@ $RefreshReg$(_c, "LostBanner");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../Banner":"hcH4r","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"bVMmE":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>(0, _timerDefault.default));
-var _timer = require("./Timer");
-parcelHelpers.exportAll(_timer, exports);
-var _timerDefault = parcelHelpers.interopDefault(_timer);
-
-},{"./Timer":"1DpMG","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1DpMG":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$9fbe = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$9fbe.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-var _s = $RefreshSig$();
-function Timer({ timer , setTimer  }) {
-    _s();
-    console.log(timer, "timer2");
-    (0, _reactDefault.default).useEffect(()=>{
-        if (timer > 0) {
-            const timerId = setTimeout(()=>{
-                const nextTimer = timer - 1;
-                setTimer(nextTimer);
-            }, 1000);
-            return ()=>clearTimeout(timerId);
-        }
-    }, [
-        timer
-    ]);
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
-        className: "timer",
-        children: timer
-    }, void 0, false, {
-        fileName: "src/components/Timer/Timer.js",
-        lineNumber: 15,
-        columnNumber: 10
-    }, this);
-}
-_s(Timer, "OD7bBpZva5O2jO+Puf00hKivP7c=");
-_c = Timer;
-exports.default = Timer;
-var _c;
-$RefreshReg$(_c, "Timer");
-
-  $parcel$ReactRefreshHelpers$9fbe.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"3rxNv":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../Banner":"hcH4r","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"3rxNv":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>(0, _timerSelectionDefault.default));
@@ -28206,26 +28180,30 @@ function TimerSelection({ timer , setTimer , handleRestart  }) {
         },
         {
             value: 120,
-            timer: "2 Minute"
+            timer: "2 Minutes"
         },
         {
             value: 180,
-            timer: "3 Minute"
+            timer: "3 Minutes"
         },
         {
             value: "",
             timer: "Cancel"
         }
     ];
-    console.log(timer);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("fieldset", {
+            style: {
+                borderRadius: "8px",
+                display: "flex",
+                justifyContent: "center"
+            },
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("legend", {
                     children: "Timer Selection"
                 }, void 0, false, {
                     fileName: "src/components/TimerSelection/TimerSelection.js",
-                    lineNumber: 15,
+                    lineNumber: 21,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("select", {
@@ -28242,7 +28220,7 @@ function TimerSelection({ timer , setTimer , handleRestart  }) {
                             children: "--Select Timer--"
                         }, void 0, false, {
                             fileName: "src/components/TimerSelection/TimerSelection.js",
-                            lineNumber: 25,
+                            lineNumber: 31,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("optgroup", {
@@ -28252,18 +28230,18 @@ function TimerSelection({ timer , setTimer , handleRestart  }) {
                                     children: timer
                                 }, crypto.randomUUID(), false, {
                                     fileName: "src/components/TimerSelection/TimerSelection.js",
-                                    lineNumber: 28,
+                                    lineNumber: 34,
                                     columnNumber: 15
                                 }, this))
                         }, void 0, false, {
                             fileName: "src/components/TimerSelection/TimerSelection.js",
-                            lineNumber: 26,
+                            lineNumber: 32,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/TimerSelection/TimerSelection.js",
-                    lineNumber: 16,
+                    lineNumber: 22,
                     columnNumber: 9
                 }, this)
             ]
@@ -28284,6 +28262,78 @@ var _c;
 $RefreshReg$(_c, "TimerSelection");
 
   $parcel$ReactRefreshHelpers$d34c.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"bVMmE":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>(0, _timerDefault.default));
+var _timer = require("./Timer");
+parcelHelpers.exportAll(_timer, exports);
+var _timerDefault = parcelHelpers.interopDefault(_timer);
+
+},{"./Timer":"1DpMG","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"1DpMG":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$9fbe = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$9fbe.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _s = $RefreshSig$();
+function Timer({ timer , setTimer , gameStatus  }) {
+    _s();
+    (0, _reactDefault.default).useEffect(()=>{
+        let timerId;
+        if (timer > 0 && gameStatus !== "lost" && gameStatus !== "won") {
+            timerId = setInterval(()=>{
+                const nextTimer = timer - 1;
+                setTimer(nextTimer);
+            }, 1000);
+            return ()=>clearInterval(timerId);
+        } else return ()=>clearInterval(timerId);
+    }, [
+        setTimer,
+        timer,
+        gameStatus
+    ]);
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
+        className: "timer",
+        style: {
+            textAlign: "center"
+        },
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+            style: {
+                backgroundColor: "hsl(0deg 70% 45%)",
+                borderRadius: "4px",
+                padding: "8px",
+                color: "white"
+            },
+            children: timer
+        }, void 0, false, {
+            fileName: "src/components/Timer/Timer.js",
+            lineNumber: 26,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
+        fileName: "src/components/Timer/Timer.js",
+        lineNumber: 20,
+        columnNumber: 5
+    }, this);
+}
+_s(Timer, "OD7bBpZva5O2jO+Puf00hKivP7c=");
+_c = Timer;
+exports.default = Timer;
+var _c;
+$RefreshReg$(_c, "Timer");
+
+  $parcel$ReactRefreshHelpers$9fbe.postlude(module);
 } finally {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
