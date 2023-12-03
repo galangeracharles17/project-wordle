@@ -220,6 +220,11 @@ h1 {
   border-radius: 0.5rem;
 }
 
+option:last-of-type {
+  background-color: gray;
+  color: white;
+}
+
 
 .visually-hidden {
   position: absolute;

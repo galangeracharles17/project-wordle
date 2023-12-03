@@ -45,7 +45,7 @@ function Game() {
   };
   //Lift the state time from TimerSelection
   const [timer, setTimer] = React.useState('');
-  console.log(timer, 'timer1');
+
   return (
     <>
       <TimerSelection
@@ -56,12 +56,18 @@ function Game() {
 
       <GuessResults guess={guess} answer={answer} />
 
-      {timer ? <Timer timer={timer} setTimer={setTimer} /> : null}
+      {timer ? (
+        <Timer timer={timer} setTimer={setTimer} gameStatus={gameStatus} />
+      ) : null}
 
       <GuessInput handleAddGuess={handleAddGuess} gameStatus={gameStatus} />
 
       {gameStatus === 'won' && (
-        <WonBanner answer={guess.length} handleRestart={handleRestart} />
+        <WonBanner
+          answer={guess.length}
+          handleRestart={handleRestart}
+          timer={timer}
+        />
       )}
       {gameStatus === 'lost' && (
         <LostBanner
@@ -75,7 +81,10 @@ function Game() {
         <LostBanner
           answer={answer}
           handleRestart={handleRestart}
-          textStatus='Sorry, times up! The correct answer is'
+          textStatus=<>
+            {'Sorry,'}
+            <strong> time's up!</strong> {'The correct answer is'}
+          </>
         />
       )}
     </>

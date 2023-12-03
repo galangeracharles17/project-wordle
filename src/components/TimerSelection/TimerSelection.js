@@ -4,14 +4,20 @@ function TimerSelection({ timer, setTimer, handleRestart }) {
   const timerValue = [
     { value: 30, timer: '30 Seconds' },
     { value: 60, timer: '1 Minute' },
-    { value: 120, timer: '2 Minute' },
-    { value: 180, timer: '3 Minute' },
+    { value: 120, timer: '2 Minutes' },
+    { value: 180, timer: '3 Minutes' },
     { value: '', timer: 'Cancel' },
   ];
-  console.log(timer);
+
   return (
     <div>
-      <fieldset>
+      <fieldset
+        style={{
+          borderRadius: '8px',
+          display: 'flex',
+          justifyContent: 'center',
+        }}
+      >
         <legend>Timer Selection</legend>
         <select
           id='timerSelection'
