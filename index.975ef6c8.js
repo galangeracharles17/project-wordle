@@ -28292,12 +28292,12 @@ function Timer({ timer , setTimer , gameStatus  }) {
     (0, _reactDefault.default).useEffect(()=>{
         let timerId;
         if (timer > 0 && gameStatus !== "lost" && gameStatus !== "won") {
-            timerId = setInterval(()=>{
+            timerId = setTimeout(()=>{
                 const nextTimer = timer - 1;
                 setTimer(nextTimer);
             }, 1000);
-            return ()=>clearInterval(timerId);
-        } else return ()=>clearInterval(timerId);
+            return ()=>clearTimeout(timerId);
+        } else return ()=>clearTimeout(timerId);
     }, [
         setTimer,
         timer,
