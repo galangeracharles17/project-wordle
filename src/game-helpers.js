@@ -3,7 +3,7 @@
  * solving algorithm!
  */
 
-export function checkGuess(guess, answer) {
+function checkGuess(guess, answer) {
   // This constant is a placeholder that indicates we've successfully
   // dealt with this character (it's correct, or misplaced).
   const SOLVED_CHAR = '✓';
@@ -53,3 +53,42 @@ export function checkGuess(guess, answer) {
 
   return result;
 }
+
+//Format helper which returns integer if true and if false returns num with 2 decimal
+function formatNumber(num) {
+  if (Number.isInteger(num)) {
+    return num; // Return integer
+  } else {
+    return num.toFixed(2); // Return number with two decimal places as a string
+  }
+}
+
+// This function serves as label for the 3 categories in time
+function timeLabel(fixedTime, currentTimer) {
+  let timeResult = fixedTime - currentTimer;
+  if (timeResult <= 59) {
+    return `${timeResult} seconds`;
+  }
+  if (timeResult <= fixedTime) {
+    if (formatNumber(timeResult / 60) === 1) {
+      return `${formatNumber(timeResult / 60)} minute`;
+    }
+
+    return `${formatNumber(timeResult / 60)} minutes`;
+  }
+}
+
+// It will handle the timer text in banner, whenever a player guesses the correct answer
+const handleTimer = (timer) => {
+  if (timer < 30) {
+    return `${30 - timer} seconds`;
+  } else if (timer <= 60) {
+    return `${60 - timer} seconds`;
+  } else if (timer <= 120) {
+    return timeLabel(120, timer);
+  } else if (timer <= 180) {
+    return timeLabel(180, timer);
+  }
+};
+
+export { checkGuess, handleTimer };
