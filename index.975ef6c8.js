@@ -27281,7 +27281,7 @@ function Game() {
                 handleRestart: handleRestart
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 51,
+                lineNumber: 50,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _guessResultsDefault.default), {
@@ -27289,7 +27289,7 @@ function Game() {
                 answer: answer
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 57,
+                lineNumber: 56,
                 columnNumber: 7
             }, this),
             timer ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _timerDefault.default), {
@@ -27298,7 +27298,7 @@ function Game() {
                 gameStatus: gameStatus
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 60,
+                lineNumber: 59,
                 columnNumber: 9
             }, this) : null,
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _guessInputDefault.default), {
@@ -27306,7 +27306,7 @@ function Game() {
                 gameStatus: gameStatus
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 63,
+                lineNumber: 62,
                 columnNumber: 7
             }, this),
             gameStatus === "won" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _wonBannerDefault.default), {
@@ -27315,7 +27315,7 @@ function Game() {
                 timer: timer
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 66,
+                lineNumber: 65,
                 columnNumber: 9
             }, this),
             gameStatus === "lost" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _lostBannerDefault.default), {
@@ -27324,7 +27324,7 @@ function Game() {
                 textStatus: "Sorry, the correct answer is"
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 73,
+                lineNumber: 72,
                 columnNumber: 9
             }, this),
             timer !== 0 ? null : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _lostBannerDefault.default), {
@@ -27342,7 +27342,7 @@ function Game() {
                 }, void 0, true)
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 81,
+                lineNumber: 80,
                 columnNumber: 9
             }, this)
         ]
@@ -27600,7 +27600,7 @@ function GuessInput({ handleAddGuess , gameStatus  }) {
         event.preventDefault();
         // Calling the handle guess to pass the value of input.
         handleAddGuess(guessItem);
-        console.log(guessItem);
+        // console.log(guessItem);
         setGuessItem("");
     };
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("form", {
@@ -27857,7 +27857,7 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _utilsJs = require("../../utils.js");
 var _gameHelpersJs = require("../../game-helpers.js");
-function StatusStyle({ letter , status  }) {
+function EachLetter({ letter , status  }) {
     const className = status ? `cell ${status}` : "cell";
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
         className: className,
@@ -27868,13 +27868,13 @@ function StatusStyle({ letter , status  }) {
         columnNumber: 10
     }, this);
 }
-_c = StatusStyle;
+_c = EachLetter;
 function Guess({ value , answer  }) {
     const result = (0, _gameHelpersJs.checkGuess)(value, answer);
-    // console.log(Boolean(result));
+    // console.log(result);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
         className: "guess",
-        children: (0, _utilsJs.range)(5).map((num)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(StatusStyle, {
+        children: (0, _utilsJs.range)(5).map((num)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(EachLetter, {
                 letter: result ? result[num].letter : undefined,
                 status: result ? result[num].status : undefined
             }, crypto.randomUUID(), false, {
@@ -27891,7 +27891,7 @@ function Guess({ value , answer  }) {
 _c1 = Guess;
 exports.default = Guess;
 var _c, _c1;
-$RefreshReg$(_c, "StatusStyle");
+$RefreshReg$(_c, "EachLetter");
 $RefreshReg$(_c1, "Guess");
 
   $parcel$ReactRefreshHelpers$424d.postlude(module);
@@ -28002,10 +28002,20 @@ function WonBanner({ answer , handleRestart , timer  }) {
                     lineNumber: 39,
                     columnNumber: 9
                 }, this),
-                " and in",
                 " ",
-                handleTimer(),
-                "."
+                timer === "" ? null : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+                    children: [
+                        "and in ",
+                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
+                            children: handleTimer()
+                        }, void 0, false, {
+                            fileName: "src/components/WonBanner/WonBanner.js",
+                            lineNumber: 43,
+                            columnNumber: 13
+                        }, this),
+                        "."
+                    ]
+                }, void 0, true)
             ]
         }, void 0, true, {
             fileName: "src/components/WonBanner/WonBanner.js",
