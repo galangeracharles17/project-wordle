@@ -36,8 +36,13 @@ function WonBanner({ answer, handleRestart, timer }) {
     <Banner status='happy' action={handleRestart} actionText='Restart Game'>
       <p>
         <strong>Congratulations!</strong> Got it in{' '}
-        <strong>{answer === 1 ? '1 guess' : `${answer} guesses`}</strong> and in{' '}
-        {handleTimer()}.
+        <strong>{answer === 1 ? '1 guess' : `${answer} guesses`}</strong>{' '}
+        {timer === '' ? null : (
+          <>
+            {'and in '}
+            <strong>{handleTimer()}</strong>.
+          </>
+        )}
       </p>
     </Banner>
   );

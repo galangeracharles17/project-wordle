@@ -8,7 +8,7 @@ function GuessInput({ handleAddGuess, gameStatus }) {
     event.preventDefault();
     // Calling the handle guess to pass the value of input.
     handleAddGuess(guessItem);
-    console.log(guessItem);
+    // console.log(guessItem);
 
     setGuessItem('');
   };
