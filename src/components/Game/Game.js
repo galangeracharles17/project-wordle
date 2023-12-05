@@ -62,11 +62,7 @@ function Game() {
       <GuessInput handleAddGuess={handleAddGuess} gameStatus={gameStatus} />
 
       {gameStatus === 'won' && (
-        <WonBanner
-          answer={guess.length}
-          handleRestart={handleRestart}
-          timer={timer}
-        />
+        <WonBanner answer={guess.length} handleRestart={handleRestart} />
       )}
       {gameStatus === 'lost' && (
         <LostBanner

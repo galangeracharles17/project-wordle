@@ -55,40 +55,64 @@ function checkGuess(guess, answer) {
 }
 
 //Format helper which returns integer if true and if false returns num with 2 decimal
-function formatNumber(num) {
-  if (Number.isInteger(num)) {
-    return num; // Return integer
-  } else {
-    return num.toFixed(2); // Return number with two decimal places as a string
+// function formatNumber(num) {
+//   if (Number.isInteger(num)) {
+//     return num; // Return integer
+//   } else {
+//     return num.toFixed(2); // Return number with two decimal places as a string
+//   }
+// }
+
+// // This function serves as label for the 3 categories in time
+// function timeLabel(fixedTime, currentTimer) {
+//   let timeResult = fixedTime - currentTimer;
+//   if (timeResult <= 59) {
+//     return `${timeResult} seconds`;
+//   }
+//   if (timeResult <= fixedTime) {
+//     if (formatNumber(timeResult / 60) === 1) {
+//       return `${formatNumber(timeResult / 60)} minute`;
+//     }
+
+//     return `${formatNumber(timeResult / 60)} minutes`;
+//   }
+// }
+
+// // It will handle the timer text in banner, whenever a player guesses the correct answer
+// const handleTimer = (timer) => {
+//   if (timer <= 60) {
+//     const countdown = timer > 30 ? 60 - timer : 30 - timer;
+//     return `${countdown} seconds`;
+//   } else if (timer <= 120) {
+//     return timeLabel(120, timer);
+//   } else if (timer <= 180) {
+//     return timeLabel(180, timer);
+//   }
+// };
+
+//Countdown function that format the number to minutes
+function countdown(seconds) {
+  if (seconds < 0) {
+    return;
   }
+
+  const minutes = Math.floor(seconds / 60);
+  const remainingSeconds = seconds % 60;
+
+  //if less than 10 add 0 to make it 2 digits as always
+  const minutesDisplay = minutes < 10 ? `0${minutes}` : minutes;
+
+  const secondsDisplay =
+    remainingSeconds < 10 ? `0${remainingSeconds}` : remainingSeconds;
+
+  //Display seconds
+  if (minutes === parseInt('00') && remainingSeconds <= 59) {
+    return `${minutesDisplay}:${secondsDisplay} seconds`;
+  }
+
+  return minutes === 1
+    ? `${minutesDisplay}:${secondsDisplay} minute`
+    : `${minutesDisplay}:${secondsDisplay} minutes`;
 }
 
-// This function serves as label for the 3 categories in time
-function timeLabel(fixedTime, currentTimer) {
-  let timeResult = fixedTime - currentTimer;
-  if (timeResult <= 59) {
-    return `${timeResult} seconds`;
-  }
-  if (timeResult <= fixedTime) {
-    if (formatNumber(timeResult / 60) === 1) {
-      return `${formatNumber(timeResult / 60)} minute`;
-    }
-
-    return `${formatNumber(timeResult / 60)} minutes`;
-  }
-}
-
-// It will handle the timer text in banner, whenever a player guesses the correct answer
-const handleTimer = (timer) => {
-  if (timer < 30) {
-    return `${30 - timer} seconds`;
-  } else if (timer <= 60) {
-    return `${60 - timer} seconds`;
-  } else if (timer <= 120) {
-    return timeLabel(120, timer);
-  } else if (timer <= 180) {
-    return timeLabel(180, timer);
-  }
-};
-
-export { checkGuess, handleTimer };
+export { checkGuess, countdown };

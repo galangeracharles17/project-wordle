@@ -1,4 +1,5 @@
 import React from 'react';
+import { countdown } from '../../game-helpers';
 
 function Timer({ timer, setTimer, gameStatus }) {
   React.useEffect(() => {
@@ -31,7 +32,7 @@ function Timer({ timer, setTimer, gameStatus }) {
           color: 'white',
         }}
       >
-        {timer}
+        {countdown(timer)}
       </span>
     </div>
   );
