@@ -27311,8 +27311,7 @@ function Game() {
             }, this),
             gameStatus === "won" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _wonBannerDefault.default), {
                 answer: guess.length,
-                handleRestart: handleRestart,
-                timer: timer
+                handleRestart: handleRestart
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
                 lineNumber: 65,
@@ -27324,7 +27323,7 @@ function Game() {
                 textStatus: "Sorry, the correct answer is"
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 72,
+                lineNumber: 68,
                 columnNumber: 9
             }, this),
             timer !== 0 ? null : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _lostBannerDefault.default), {
@@ -27342,7 +27341,7 @@ function Game() {
                 }, void 0, true)
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 80,
+                lineNumber: 76,
                 columnNumber: 9
             }, this)
         ]
@@ -27906,7 +27905,7 @@ $RefreshReg$(_c1, "Guess");
  */ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "checkGuess", ()=>checkGuess);
-parcelHelpers.export(exports, "handleTimer", ()=>handleTimer);
+parcelHelpers.export(exports, "countdown", ()=>countdown);
 function checkGuess(guess, answer) {
     // This constant is a placeholder that indicates we've successfully
     // dealt with this character (it's correct, or misplaced).
@@ -27942,26 +27941,49 @@ function checkGuess(guess, answer) {
     return result;
 }
 //Format helper which returns integer if true and if false returns num with 2 decimal
-function formatNumber(num) {
-    if (Number.isInteger(num)) return num; // Return integer
-    else return num.toFixed(2); // Return number with two decimal places as a string
+// function formatNumber(num) {
+//   if (Number.isInteger(num)) {
+//     return num; // Return integer
+//   } else {
+//     return num.toFixed(2); // Return number with two decimal places as a string
+//   }
+// }
+// // This function serves as label for the 3 categories in time
+// function timeLabel(fixedTime, currentTimer) {
+//   let timeResult = fixedTime - currentTimer;
+//   if (timeResult <= 59) {
+//     return `${timeResult} seconds`;
+//   }
+//   if (timeResult <= fixedTime) {
+//     if (formatNumber(timeResult / 60) === 1) {
+//       return `${formatNumber(timeResult / 60)} minute`;
+//     }
+//     return `${formatNumber(timeResult / 60)} minutes`;
+//   }
+// }
+// // It will handle the timer text in banner, whenever a player guesses the correct answer
+// const handleTimer = (timer) => {
+//   if (timer <= 60) {
+//     const countdown = timer > 30 ? 60 - timer : 30 - timer;
+//     return `${countdown} seconds`;
+//   } else if (timer <= 120) {
+//     return timeLabel(120, timer);
+//   } else if (timer <= 180) {
+//     return timeLabel(180, timer);
+//   }
+// };
+//Countdown function that format the number to minutes
+function countdown(seconds) {
+    if (seconds < 0) return;
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    //if less than 10 add 0 to make it 2 digits as always
+    const minutesDisplay = minutes < 10 ? `0${minutes}` : minutes;
+    const secondsDisplay = remainingSeconds < 10 ? `0${remainingSeconds}` : remainingSeconds;
+    //Display seconds
+    if (minutes === parseInt("00") && remainingSeconds <= 59) return `${minutesDisplay}:${secondsDisplay} seconds`;
+    return minutes === 1 ? `${minutesDisplay}:${secondsDisplay} minute` : `${minutesDisplay}:${secondsDisplay} minutes`;
 }
-// This function serves as label for the 3 categories in time
-function timeLabel(fixedTime, currentTimer) {
-    let timeResult = fixedTime - currentTimer;
-    if (timeResult <= 59) return `${timeResult} seconds`;
-    if (timeResult <= fixedTime) {
-        if (formatNumber(timeResult / 60) === 1) return `${formatNumber(timeResult / 60)} minute`;
-        return `${formatNumber(timeResult / 60)} minutes`;
-    }
-}
-// It will handle the timer text in banner, whenever a player guesses the correct answer
-const handleTimer = (timer)=>{
-    if (timer < 30) return `${30 - timer} seconds`;
-    else if (timer <= 60) return `${60 - timer} seconds`;
-    else if (timer <= 120) return timeLabel(120, timer);
-    else if (timer <= 180) return timeLabel(180, timer);
-};
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"isERa":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -27985,8 +28007,7 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _banner = require("../Banner");
 var _bannerDefault = parcelHelpers.interopDefault(_banner);
-var _gameHelpers = require("../../game-helpers");
-function WonBanner({ answer , handleRestart , timer  }) {
+function WonBanner({ answer , handleRestart  }) {
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _bannerDefault.default), {
         status: "happy",
         action: handleRestart,
@@ -27997,41 +28018,30 @@ function WonBanner({ answer , handleRestart , timer  }) {
                     children: "Congratulations!"
                 }, void 0, false, {
                     fileName: "src/components/WonBanner/WonBanner.js",
-                    lineNumber: 9,
+                    lineNumber: 8,
                     columnNumber: 9
                 }, this),
                 " Got it in",
                 " ",
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
-                    children: answer === 1 ? "1 guess" : `${answer} guesses`
-                }, void 0, false, {
-                    fileName: "src/components/WonBanner/WonBanner.js",
-                    lineNumber: 10,
-                    columnNumber: 9
-                }, this),
-                " ",
-                timer === "" ? null : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
                     children: [
-                        "and in ",
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
-                            children: (0, _gameHelpers.handleTimer)(timer)
-                        }, void 0, false, {
-                            fileName: "src/components/WonBanner/WonBanner.js",
-                            lineNumber: 14,
-                            columnNumber: 13
-                        }, this),
+                        answer === 1 ? "1 guess" : `${answer} guesses`,
                         "."
                     ]
-                }, void 0, true)
+                }, void 0, true, {
+                    fileName: "src/components/WonBanner/WonBanner.js",
+                    lineNumber: 9,
+                    columnNumber: 9
+                }, this)
             ]
         }, void 0, true, {
             fileName: "src/components/WonBanner/WonBanner.js",
-            lineNumber: 8,
+            lineNumber: 7,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "src/components/WonBanner/WonBanner.js",
-        lineNumber: 7,
+        lineNumber: 6,
         columnNumber: 5
     }, this);
 }
@@ -28045,7 +28055,7 @@ $RefreshReg$(_c, "WonBanner");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../Banner":"hcH4r","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../../game-helpers":"dWwK5"}],"hcH4r":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../Banner":"hcH4r","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"hcH4r":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>(0, _bannerDefault.default));
@@ -28303,6 +28313,7 @@ parcelHelpers.defineInteropFlag(exports);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
+var _gameHelpers = require("../../game-helpers");
 var _s = $RefreshSig$();
 function Timer({ timer , setTimer , gameStatus  }) {
     _s();
@@ -28332,15 +28343,15 @@ function Timer({ timer , setTimer , gameStatus  }) {
                 padding: "8px",
                 color: "white"
             },
-            children: timer
+            children: (0, _gameHelpers.countdown)(timer)
         }, void 0, false, {
             fileName: "src/components/Timer/Timer.js",
-            lineNumber: 26,
+            lineNumber: 27,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "src/components/Timer/Timer.js",
-        lineNumber: 20,
+        lineNumber: 21,
         columnNumber: 5
     }, this);
 }
@@ -28355,7 +28366,7 @@ $RefreshReg$(_c, "Timer");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"cxSZo":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../../game-helpers":"dWwK5"}],"cxSZo":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>(0, _headerDefault.default));
