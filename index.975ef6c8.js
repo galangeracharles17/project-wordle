@@ -2951,16 +2951,10 @@ var _appDefault = parcelHelpers.interopDefault(_app);
 var _resetCss = require("./reset.css");
 var _stylesCss = require("./styles.css");
 const root = (0, _client.createRoot)(document.querySelector("#root"));
-root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactDefault.default).StrictMode, {
-    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _appDefault.default), {}, void 0, false, {
-        fileName: "src/index.js",
-        lineNumber: 12,
-        columnNumber: 5
-    }, undefined)
-}, void 0, false, {
+root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _appDefault.default), {}, void 0, false, {
     fileName: "src/index.js",
-    lineNumber: 11,
-    columnNumber: 3
+    lineNumber: 10,
+    columnNumber: 13
 }, undefined));
 
   $parcel$ReactRefreshHelpers$20e5.postlude(module);
@@ -28250,7 +28244,7 @@ function TimerSelection({ timer , setTimer , handleRestart  }) {
                     children: [
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
                             value: "",
-                            children: "--Select Timer--"
+                            children: `--Select Timer--`
                         }, void 0, false, {
                             fileName: "src/components/TimerSelection/TimerSelection.js",
                             lineNumber: 31,
@@ -28258,10 +28252,10 @@ function TimerSelection({ timer , setTimer , handleRestart  }) {
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("optgroup", {
                             label: "Timer",
-                            children: timerValue.map(({ value , timer  })=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
+                            children: timerValue.map(({ value , timer  }, index)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
                                     value: value,
                                     children: timer
-                                }, crypto.randomUUID(), false, {
+                                }, index, false, {
                                     fileName: "src/components/TimerSelection/TimerSelection.js",
                                     lineNumber: 34,
                                     columnNumber: 15
