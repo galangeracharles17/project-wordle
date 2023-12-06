@@ -7,4 +7,8 @@ import './reset.css';
 import './styles.css';
 
 const root = createRoot(document.querySelector('#root'));
-root.render(<App />);
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);

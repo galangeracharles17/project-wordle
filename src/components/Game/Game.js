@@ -45,6 +45,7 @@ function Game() {
   };
   //Lift the state time from TimerSelection
   const [timer, setTimer] = React.useState('');
+
   return (
     <>
       <TimerSelection

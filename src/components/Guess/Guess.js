@@ -14,9 +14,9 @@ function Guess({ value, answer }) {
   // console.log(result);
   return (
     <p className='guess'>
-      {range(5).map((num) => (
+      {range(5).map((num, index) => (
         <EachLetter
-          key={crypto.randomUUID()}
+          key={index}
           letter={result ? result[num].letter : undefined}
           status={result ? result[num].status : undefined}
         />

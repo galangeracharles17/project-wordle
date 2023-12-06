@@ -10,9 +10,9 @@ function GuessResults({ guess, answer }) {
 
   return (
     <div className='guess-results'>
-      {range(NUM_OF_GUESSES_ALLOWED).map((num) => (
+      {range(NUM_OF_GUESSES_ALLOWED).map((num, index) => (
         // Capture the guess array element
-        <Guess key={crypto.randomUUID()} value={guess[num]} answer={answer} />
+        <Guess key={index} value={guess[num]} answer={answer} />
       ))}
     </div>
   );
