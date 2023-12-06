@@ -28,10 +28,10 @@ function TimerSelection({ timer, setTimer, handleRestart }) {
             return setTimer(event.target.value);
           }}
         >
-          <option value=''>--Select Timer--</option>
+          <option value=''>{`--Select Timer--`}</option>
           <optgroup label='Timer'>
-            {timerValue.map(({ value, timer }) => (
-              <option key={crypto.randomUUID()} value={value}>
+            {timerValue.map(({ value, timer }, index) => (
+              <option key={index} value={value}>
                 {timer}
               </option>
             ))}
