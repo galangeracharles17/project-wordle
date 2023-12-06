@@ -2951,10 +2951,16 @@ var _appDefault = parcelHelpers.interopDefault(_app);
 var _resetCss = require("./reset.css");
 var _stylesCss = require("./styles.css");
 const root = (0, _client.createRoot)(document.querySelector("#root"));
-root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _appDefault.default), {}, void 0, false, {
+root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactDefault.default).StrictMode, {
+    children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _appDefault.default), {}, void 0, false, {
+        fileName: "src/index.js",
+        lineNumber: 12,
+        columnNumber: 5
+    }, undefined)
+}, void 0, false, {
     fileName: "src/index.js",
-    lineNumber: 10,
-    columnNumber: 13
+    lineNumber: 11,
+    columnNumber: 3
 }, undefined));
 
   $parcel$ReactRefreshHelpers$20e5.postlude(module);
@@ -27281,7 +27287,7 @@ function Game() {
                 handleRestart: handleRestart
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 50,
+                lineNumber: 51,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _guessResultsDefault.default), {
@@ -27289,7 +27295,7 @@ function Game() {
                 answer: answer
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 56,
+                lineNumber: 57,
                 columnNumber: 7
             }, this),
             timer ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _timerDefault.default), {
@@ -27298,7 +27304,7 @@ function Game() {
                 gameStatus: gameStatus
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 59,
+                lineNumber: 60,
                 columnNumber: 9
             }, this) : null,
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _guessInputDefault.default), {
@@ -27306,7 +27312,7 @@ function Game() {
                 gameStatus: gameStatus
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 62,
+                lineNumber: 63,
                 columnNumber: 7
             }, this),
             gameStatus === "won" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _wonBannerDefault.default), {
@@ -27314,7 +27320,7 @@ function Game() {
                 handleRestart: handleRestart
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 65,
+                lineNumber: 66,
                 columnNumber: 9
             }, this),
             gameStatus === "lost" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _lostBannerDefault.default), {
@@ -27323,7 +27329,7 @@ function Game() {
                 textStatus: "Sorry, the correct answer is"
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 68,
+                lineNumber: 69,
                 columnNumber: 9
             }, this),
             timer !== 0 ? null : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _lostBannerDefault.default), {
@@ -27341,7 +27347,7 @@ function Game() {
                 }, void 0, true)
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 76,
+                lineNumber: 77,
                 columnNumber: 9
             }, this)
         ]
@@ -27817,11 +27823,11 @@ function GuessResults({ guess , answer  }) {
     // Each element in array will create a new row (with guess value)
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         className: "guess-results",
-        children: (0, _utilsJs.range)((0, _constantsJs.NUM_OF_GUESSES_ALLOWED)).map((num)=>// Capture the guess array element
+        children: (0, _utilsJs.range)((0, _constantsJs.NUM_OF_GUESSES_ALLOWED)).map((num, index)=>// Capture the guess array element
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _guessJsDefault.default), {
                 value: guess[num],
                 answer: answer
-            }, crypto.randomUUID(), false, {
+            }, index, false, {
                 fileName: "src/components/GuessResults/GuessResults.js",
                 lineNumber: 15,
                 columnNumber: 9
@@ -27873,10 +27879,10 @@ function Guess({ value , answer  }) {
     // console.log(result);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
         className: "guess",
-        children: (0, _utilsJs.range)(5).map((num)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(EachLetter, {
+        children: (0, _utilsJs.range)(5).map((num, index)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(EachLetter, {
                 letter: result ? result[num].letter : undefined,
                 status: result ? result[num].status : undefined
-            }, crypto.randomUUID(), false, {
+            }, index, false, {
                 fileName: "src/components/Guess/Guess.js",
                 lineNumber: 18,
                 columnNumber: 9
@@ -28366,7 +28372,7 @@ $RefreshReg$(_c, "Timer");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../../game-helpers":"dWwK5"}],"cxSZo":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../../game-helpers":"dWwK5","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"cxSZo":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>(0, _headerDefault.default));
