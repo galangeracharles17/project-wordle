@@ -223,8 +223,10 @@ legend {
 }
 
 select {
+  background-color: #fefefe;
   border-radius: .2rem;
   margin: 1rem 0;
+  box-shadow: 2px 2px 2px 1px #0000001a;
 }
 
 .visually-hidden {
