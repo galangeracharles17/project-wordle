@@ -12,6 +12,7 @@ import LostBanner from '../LostBanner';
 
 import TimerSelection from '../TimerSelection';
 import Timer from '../Timer';
+import WonConfetti from '../WonConfetti';
 
 function Game() {
   // Pick a random word on every pageload.
@@ -42,9 +43,14 @@ function Game() {
     setGuess([]);
     setGameStatus('running');
     setTimer('');
+    setShowConfetti(true);
   };
   //Lift the state time from TimerSelection
   const [timer, setTimer] = React.useState('');
+  const currentTimeDisplay = React.useRef(timer);
+  console.log(currentTimeDisplay.current);
+  //Confetti State
+  const [showConfetti, setShowConfetti] = React.useState(true);
 
   return (
     <>
@@ -53,18 +59,23 @@ function Game() {
         setTimer={setTimer}
         handleRestart={handleRestart}
       />
-
       <GuessResults guess={guess} answer={answer} />
-
       {timer ? (
         <Timer timer={timer} setTimer={setTimer} gameStatus={gameStatus} />
       ) : null}
-
       <GuessInput handleAddGuess={handleAddGuess} gameStatus={gameStatus} />
-
       {gameStatus === 'won' && (
         <WonBanner answer={guess.length} handleRestart={handleRestart} />
       )}
+
+      {gameStatus === 'won' && (
+        <WonConfetti
+          showConfetti={showConfetti}
+          setShowConfetti={setShowConfetti}
+          gameStatus={gameStatus}
+        />
+      )}
+
       {gameStatus === 'lost' && (
         <LostBanner
           answer={answer}
@@ -72,7 +83,6 @@ function Game() {
           textStatus='Sorry, the correct answer is'
         />
       )}
-
       {timer !== 0 ? null : (
         <LostBanner
           answer={answer}
