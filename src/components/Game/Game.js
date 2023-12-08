@@ -47,8 +47,7 @@ function Game() {
   };
   //Lift the state time from TimerSelection
   const [timer, setTimer] = React.useState('');
-  const currentTimeDisplay = React.useRef(timer);
-  console.log(currentTimeDisplay.current);
+
   //Confetti State
   const [showConfetti, setShowConfetti] = React.useState(true);
 

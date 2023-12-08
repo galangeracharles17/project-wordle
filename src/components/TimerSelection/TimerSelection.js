@@ -11,13 +11,7 @@ function TimerSelection({ timer, setTimer, handleRestart }) {
 
   return (
     <div>
-      <fieldset
-        style={{
-          borderRadius: '8px',
-          display: 'flex',
-          justifyContent: 'center',
-        }}
-      >
+      <fieldset>
         <legend>Timer Selection</legend>
         <select
           id='timerSelection'

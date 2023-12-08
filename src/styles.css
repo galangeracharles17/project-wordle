@@ -4,7 +4,7 @@
 html {
   overflow-y: scroll;
 
-  --game-spacing: 32px;
+  --game-spacing: 1.2rem;
   --header-height: 4rem;
 
   --color-success: hsl(150deg 70% 30%);
@@ -225,6 +225,26 @@ option:last-of-type {
   color: white;
 }
 
+fieldset {
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  border: 2px solid var(--color-gray-700);
+}
+
+legend {
+  text-align: center;
+  background-color: var(--color-success);
+  color: white;
+  padding: 0.2rem 1rem;
+  border-radius: 0.5rem;
+}
+
+select {
+  margin: 1rem 0;
+  border-radius: 0.2rem;
+}
 
 .visually-hidden {
   position: absolute;
@@ -275,7 +295,8 @@ option:last-of-type {
   }
 }
 
-@media only screen and (max-width: 322px) {
+/*To adjust the font whenever the user used the onscreen keyboard on their smartphone*/
+@media only screen and (max-width: 276px) {
   .cell {
     font-size: 1rem;
   }
