@@ -1,5 +1,5 @@
 html {
-  --game-spacing: 32px;
+  --game-spacing: 1.2rem;
   --header-height: 4rem;
   --color-success: #17824d;
   --color-warning: #998000;
@@ -206,6 +206,27 @@ option:last-of-type {
   background-color: gray;
 }
 
+fieldset {
+  border: 2px solid var(--color-gray-700);
+  border-radius: 8px;
+  justify-content: center;
+  padding: 0;
+  display: flex;
+}
+
+legend {
+  text-align: center;
+  background-color: var(--color-success);
+  color: #fff;
+  border-radius: .5rem;
+  padding: .2rem 1rem;
+}
+
+select {
+  border-radius: .2rem;
+  margin: 1rem 0;
+}
+
 .visually-hidden {
   clip: rect(0 0 0 0);
   border: 0;
@@ -245,7 +266,7 @@ option:last-of-type {
   }
 }
 
-@media only screen and (width <= 322px) {
+@media only screen and (width <= 276px) {
   .cell {
     font-size: 1rem;
   }

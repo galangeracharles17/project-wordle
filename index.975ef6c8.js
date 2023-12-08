@@ -27276,8 +27276,6 @@ function Game() {
     };
     //Lift the state time from TimerSelection
     const [timer, setTimer] = (0, _reactDefault.default).useState("");
-    const currentTimeDisplay = (0, _reactDefault.default).useRef(timer);
-    console.log(currentTimeDisplay.current);
     //Confetti State
     const [showConfetti, setShowConfetti] = (0, _reactDefault.default).useState(true);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
@@ -27288,7 +27286,7 @@ function Game() {
                 handleRestart: handleRestart
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 57,
+                lineNumber: 56,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _guessResultsDefault.default), {
@@ -27296,7 +27294,7 @@ function Game() {
                 answer: answer
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 62,
+                lineNumber: 61,
                 columnNumber: 7
             }, this),
             timer ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _timerDefault.default), {
@@ -27305,7 +27303,7 @@ function Game() {
                 gameStatus: gameStatus
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 64,
+                lineNumber: 63,
                 columnNumber: 9
             }, this) : null,
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _guessInputDefault.default), {
@@ -27313,7 +27311,7 @@ function Game() {
                 gameStatus: gameStatus
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 66,
+                lineNumber: 65,
                 columnNumber: 7
             }, this),
             gameStatus === "won" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _wonBannerDefault.default), {
@@ -27321,7 +27319,7 @@ function Game() {
                 handleRestart: handleRestart
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 68,
+                lineNumber: 67,
                 columnNumber: 9
             }, this),
             gameStatus === "won" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _wonConfettiDefault.default), {
@@ -27330,7 +27328,7 @@ function Game() {
                 gameStatus: gameStatus
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 72,
+                lineNumber: 71,
                 columnNumber: 9
             }, this),
             gameStatus === "lost" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _lostBannerDefault.default), {
@@ -27339,7 +27337,7 @@ function Game() {
                 textStatus: "Sorry, the correct answer is"
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 80,
+                lineNumber: 79,
                 columnNumber: 9
             }, this),
             timer !== 0 ? null : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _lostBannerDefault.default), {
@@ -27357,13 +27355,13 @@ function Game() {
                 }, void 0, true)
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 87,
+                lineNumber: 86,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true);
 }
-_s(Game, "a6vyMWjx6mdpk2R7yaQnO6kucyI=");
+_s(Game, "UaQApdvrMDh4SlvcQbL/Ime9XUU=");
 _c = Game;
 exports.default = Game;
 var _c;
@@ -28220,17 +28218,12 @@ function TimerSelection({ timer , setTimer , handleRestart  }) {
     ];
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("fieldset", {
-            style: {
-                borderRadius: "8px",
-                display: "flex",
-                justifyContent: "center"
-            },
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("legend", {
                     children: "Timer Selection"
                 }, void 0, false, {
                     fileName: "src/components/TimerSelection/TimerSelection.js",
-                    lineNumber: 21,
+                    lineNumber: 15,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("select", {
@@ -28247,7 +28240,7 @@ function TimerSelection({ timer , setTimer , handleRestart  }) {
                             children: `--Select Timer--`
                         }, void 0, false, {
                             fileName: "src/components/TimerSelection/TimerSelection.js",
-                            lineNumber: 31,
+                            lineNumber: 25,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("optgroup", {
@@ -28257,18 +28250,18 @@ function TimerSelection({ timer , setTimer , handleRestart  }) {
                                     children: timer
                                 }, index, false, {
                                     fileName: "src/components/TimerSelection/TimerSelection.js",
-                                    lineNumber: 34,
+                                    lineNumber: 28,
                                     columnNumber: 15
                                 }, this))
                         }, void 0, false, {
                             fileName: "src/components/TimerSelection/TimerSelection.js",
-                            lineNumber: 32,
+                            lineNumber: 26,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/TimerSelection/TimerSelection.js",
-                    lineNumber: 22,
+                    lineNumber: 16,
                     columnNumber: 9
                 }, this)
             ]
