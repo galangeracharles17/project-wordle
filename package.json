@@ -5,6 +5,7 @@
   "private": true,
   "author": "Josh Comeau <me@joshwcomeau.com>",
   "dependencies": {
+    "axios": "^1.6.2",
     "eslint": "8.49.0",
     "eslint-config-react-app": "7.0.1",
     "new-component": "5.0.2",
@@ -26,6 +27,7 @@
   },
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "devDependencies": {
+    "buffer": "^6.0.3",
     "gh-pages": "^6.1.0"
   }
 }
