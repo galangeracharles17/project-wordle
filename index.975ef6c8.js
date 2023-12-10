@@ -28164,7 +28164,7 @@ function LostBanner({ answer , handleRestart , textStatus  }) {
                     lineNumber: 18,
                     columnNumber: 22
                 }, this),
-                " ",
+                ".",
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("strong", {
                     style: {
                         display: "block",
@@ -28176,8 +28176,7 @@ function LostBanner({ answer , handleRestart , textStatus  }) {
                     lineNumber: 19,
                     columnNumber: 9
                 }, this),
-                error ? error : definition,
-                "."
+                error ? error : definition
             ]
         }, void 0, true, {
             fileName: "src/components/LostBanner/LostBanner.js",
