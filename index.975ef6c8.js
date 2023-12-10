@@ -27372,7 +27372,7 @@ $RefreshReg$(_c, "Game");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../../utils":"en4he","../../data":"9kapS","../../constants.js":"3huJa","../GuessInput":"7KsIF","../GuessResults":"kxxIc","../WonBanner":"isERa","../LostBanner":"5Kimf","../TimerSelection":"3rxNv","../Timer":"bVMmE","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../WonConfetti":"cZxnA"}],"en4he":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../../utils":"en4he","../../data":"9kapS","../../constants.js":"3huJa","../GuessInput":"7KsIF","../GuessResults":"kxxIc","../WonBanner":"isERa","../LostBanner":"5Kimf","../TimerSelection":"3rxNv","../Timer":"bVMmE","../WonConfetti":"cZxnA","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"en4he":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "sample", ()=>sample);
@@ -28243,21 +28243,14 @@ function TimerSelection({ timer , setTimer , handleRestart  }) {
                             lineNumber: 25,
                             columnNumber: 11
                         }, this),
-                        /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("optgroup", {
-                            label: "Timer",
-                            children: timerValue.map(({ value , timer  }, index)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
-                                    value: value,
-                                    children: timer
-                                }, index, false, {
-                                    fileName: "src/components/TimerSelection/TimerSelection.js",
-                                    lineNumber: 28,
-                                    columnNumber: 15
-                                }, this))
-                        }, void 0, false, {
-                            fileName: "src/components/TimerSelection/TimerSelection.js",
-                            lineNumber: 26,
-                            columnNumber: 11
-                        }, this)
+                        timerValue.map(({ value , timer  }, index)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
+                                value: value,
+                                children: timer
+                            }, index, false, {
+                                fileName: "src/components/TimerSelection/TimerSelection.js",
+                                lineNumber: 27,
+                                columnNumber: 13
+                            }, this))
                     ]
                 }, void 0, true, {
                     fileName: "src/components/TimerSelection/TimerSelection.js",
@@ -28313,12 +28306,12 @@ function Timer({ timer , setTimer , gameStatus  }) {
     (0, _reactDefault.default).useEffect(()=>{
         let timerId;
         if (timer > 0 && gameStatus !== "lost" && gameStatus !== "won") {
-            timerId = setTimeout(()=>{
+            timerId = setInterval(()=>{
                 const nextTimer = timer - 1;
                 setTimer(nextTimer);
             }, 1000);
-            return ()=>clearTimeout(timerId);
-        } else return ()=>clearTimeout(timerId);
+            return ()=>clearInterval(timerId);
+        } else return ()=>clearInterval(timerId);
     }, [
         setTimer,
         timer,
@@ -28386,7 +28379,7 @@ function WonConfetti({ showConfetti , setShowConfetti , gameStatus  }) {
     _s();
     const fixedWindowSize = {
         width: window.innerWidth,
-        height: window.innerHeight
+        height: document.documentElement.scrollHeight || window.innerHeight
     };
     (0, _reactDefault.default).useEffect(()=>{
         let confettiDurationId;
@@ -28419,7 +28412,7 @@ $RefreshReg$(_c, "WonConfetti");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-confetti":"j3zCL"}],"j3zCL":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-confetti":"j3zCL","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"j3zCL":[function(require,module,exports) {
 !function(t, e) {
     module.exports = e(require("34009e003b690bf5"));
 }("undefined" != typeof self ? self : this, function(t) {
