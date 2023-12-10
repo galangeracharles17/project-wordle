@@ -3,7 +3,7 @@ import Confetti from 'react-confetti';
 function WonConfetti({ showConfetti, setShowConfetti, gameStatus }) {
   const fixedWindowSize = {
     width: window.innerWidth,
-    height: window.innerHeight,
+    height: document.documentElement.scrollHeight || window.innerHeight,
   };
 
   React.useEffect(() => {

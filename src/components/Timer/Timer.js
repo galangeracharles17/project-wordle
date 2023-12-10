@@ -6,14 +6,14 @@ function Timer({ timer, setTimer, gameStatus }) {
     let timerId;
 
     if (timer > 0 && gameStatus !== 'lost' && gameStatus !== 'won') {
-      timerId = setTimeout(() => {
+      timerId = setInterval(() => {
         const nextTimer = timer - 1;
         setTimer(nextTimer);
       }, 1000);
 
-      return () => clearTimeout(timerId);
+      return () => clearInterval(timerId);
     } else {
-      return () => clearTimeout(timerId);
+      return () => clearInterval(timerId);
     }
   }, [setTimer, timer, gameStatus]);
 

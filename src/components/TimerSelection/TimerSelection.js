@@ -23,13 +23,11 @@ function TimerSelection({ timer, setTimer, handleRestart }) {
           }}
         >
           <option value=''>{`Select Timer`}</option>
-          <optgroup label='Timer'>
-            {timerValue.map(({ value, timer }, index) => (
-              <option key={index} value={value}>
-                {timer}
-              </option>
-            ))}
-          </optgroup>
+          {timerValue.map(({ value, timer }, index) => (
+            <option key={index} value={value}>
+              {timer}
+            </option>
+          ))}
         </select>
       </fieldset>
     </div>
