@@ -15,9 +15,9 @@ function LostBanner({ answer, handleRestart, textStatus }) {
   return (
     <Banner status='sad' action={handleRestart} actionText='Restart Game'>
       <p>
-        {textStatus} <strong>{answer}</strong>{' '}
+        {textStatus} <strong>{answer}</strong>.
         <strong style={{ display: 'block', marginTop: '8px' }}>Meaning</strong>
-        {error ? error : definition}.
+        {error ? error : definition}
       </p>
     </Banner>
   );
