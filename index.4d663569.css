@@ -201,15 +201,11 @@ h1 {
   padding: .5rem;
 }
 
-option:last-of-type {
-  color: #fff;
-  background-color: gray;
-}
-
 fieldset {
   border: 2px solid var(--color-gray-700);
   border-radius: 8px;
   justify-content: center;
+  gap: 1.5rem;
   padding: 0;
   display: flex;
 }
@@ -225,8 +221,14 @@ legend {
 select {
   background-color: #fefefe;
   border-radius: .2rem;
+  width: 40%;
   margin: 1rem 0;
   box-shadow: 2px 2px 2px 1px #0000001a;
+}
+
+.select-timer option:last-of-type {
+  color: #fff;
+  background-color: gray;
 }
 
 .visually-hidden {
