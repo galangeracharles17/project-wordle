@@ -4,7 +4,7 @@ function SelectionHolder({ children }) {
   return (
     <>
       <fieldset>
-        <legend>Timer & Categories</legend>
+        <legend>Categories & Timer</legend>
         {children}
       </fieldset>
     </>

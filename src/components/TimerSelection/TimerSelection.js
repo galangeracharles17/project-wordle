@@ -10,7 +10,6 @@ function TimerSelection({ setTimer, handleRestart }) {
     { value: 180, timer: '3 Minutes' },
     { value: '', timer: 'Cancel' },
   ];
-
   // It prevents render loop
   // Ensuring correct timing
   React.useEffect(() => {
@@ -18,27 +17,25 @@ function TimerSelection({ setTimer, handleRestart }) {
   }, [setTimer, selectTimer]);
 
   return (
-    <>
-      <select
-        id='timerSelection'
-        name='timer'
-        className='select-timer'
-        value={selectTimer}
-        onChange={(event) => {
-          handleRestart();
-          setSelectTimer(event.target.value);
-        }}
-      >
-        <option disabled value=''>
-          Select Timer
+    <select
+      id='timerSelection'
+      name='timer'
+      className='select-timer'
+      value={selectTimer}
+      onChange={(event) => {
+        handleRestart();
+        setSelectTimer(event.target.value);
+      }}
+    >
+      <option disabled value=''>
+        Select Timer
+      </option>
+      {timerValue.map(({ value, timer }, index) => (
+        <option key={index} value={value}>
+          {timer}
         </option>
-        {timerValue.map(({ value, timer }, index) => (
-          <option key={index} value={value}>
-            {timer}
-          </option>
-        ))}
-      </select>
-    </>
+      ))}
+    </select>
   );
 }
 

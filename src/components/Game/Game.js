@@ -82,16 +82,12 @@ function Game() {
   return (
     <>
       <SelectionHolder>
-        <TimerSelection
-          timer={timer}
-          setTimer={setTimer}
-          handleRestart={handleRestart}
-        />
         <CategorySelection
           handleAnswerCategory={handleAnswerCategory}
           setAnswerCategory={setAnswerCategory}
           handleRestart={handleRestart}
         />
+        <TimerSelection setTimer={setTimer} handleRestart={handleRestart} />
       </SelectionHolder>
       <GuessResults guess={guess} answer={answer} />
       {timer ? (
