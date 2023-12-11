@@ -27310,18 +27310,17 @@ function Game() {
         children: [
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _selectionHolderDefault.default), {
                 children: [
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _timerSelectionDefault.default), {
-                        timer: timer,
-                        setTimer: setTimer,
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _categorySelectionDefault.default), {
+                        handleAnswerCategory: handleAnswerCategory,
+                        setAnswerCategory: setAnswerCategory,
                         handleRestart: handleRestart
                     }, void 0, false, {
                         fileName: "src/components/Game/Game.js",
                         lineNumber: 85,
                         columnNumber: 9
                     }, this),
-                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _categorySelectionDefault.default), {
-                        handleAnswerCategory: handleAnswerCategory,
-                        setAnswerCategory: setAnswerCategory,
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _timerSelectionDefault.default), {
+                        setTimer: setTimer,
                         handleRestart: handleRestart
                     }, void 0, false, {
                         fileName: "src/components/Game/Game.js",
@@ -27339,7 +27338,7 @@ function Game() {
                 answer: answer
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 96,
+                lineNumber: 92,
                 columnNumber: 7
             }, this),
             timer ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _timerDefault.default), {
@@ -27348,7 +27347,7 @@ function Game() {
                 gameStatus: gameStatus
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 98,
+                lineNumber: 94,
                 columnNumber: 9
             }, this) : null,
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _guessInputDefault.default), {
@@ -27356,7 +27355,7 @@ function Game() {
                 gameStatus: gameStatus
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 100,
+                lineNumber: 96,
                 columnNumber: 7
             }, this),
             gameStatus === "won" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _wonBannerDefault.default), {
@@ -27364,7 +27363,7 @@ function Game() {
                 handleRestart: handleRestart
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 102,
+                lineNumber: 98,
                 columnNumber: 9
             }, this),
             gameStatus === "won" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _wonConfettiDefault.default), {
@@ -27373,7 +27372,7 @@ function Game() {
                 gameStatus: gameStatus
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 106,
+                lineNumber: 102,
                 columnNumber: 9
             }, this),
             gameStatus === "lost" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _lostBannerDefault.default), {
@@ -27382,7 +27381,7 @@ function Game() {
                 textStatus: "Sorry, the correct answer is"
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 114,
+                lineNumber: 110,
                 columnNumber: 9
             }, this),
             timer !== 0 ? null : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _lostBannerDefault.default), {
@@ -27400,7 +27399,7 @@ function Game() {
                 }, void 0, true)
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 121,
+                lineNumber: 117,
                 columnNumber: 9
             }, this)
         ]
@@ -32709,41 +32708,39 @@ function TimerSelection({ setTimer , handleRestart  }) {
         setTimer,
         selectTimer
     ]);
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("select", {
-            id: "timerSelection",
-            name: "timer",
-            className: "select-timer",
-            value: selectTimer,
-            onChange: (event)=>{
-                handleRestart();
-                setSelectTimer(event.target.value);
-            },
-            children: [
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
-                    disabled: true,
-                    value: "",
-                    children: "Select Timer"
-                }, void 0, false, {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("select", {
+        id: "timerSelection",
+        name: "timer",
+        className: "select-timer",
+        value: selectTimer,
+        onChange: (event)=>{
+            handleRestart();
+            setSelectTimer(event.target.value);
+        },
+        children: [
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
+                disabled: true,
+                value: "",
+                children: "Select Timer"
+            }, void 0, false, {
+                fileName: "src/components/TimerSelection/TimerSelection.js",
+                lineNumber: 30,
+                columnNumber: 7
+            }, this),
+            timerValue.map(({ value , timer  }, index)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
+                    value: value,
+                    children: timer
+                }, index, false, {
                     fileName: "src/components/TimerSelection/TimerSelection.js",
-                    lineNumber: 32,
+                    lineNumber: 34,
                     columnNumber: 9
-                }, this),
-                timerValue.map(({ value , timer  }, index)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
-                        value: value,
-                        children: timer
-                    }, index, false, {
-                        fileName: "src/components/TimerSelection/TimerSelection.js",
-                        lineNumber: 36,
-                        columnNumber: 11
-                    }, this))
-            ]
-        }, void 0, true, {
-            fileName: "src/components/TimerSelection/TimerSelection.js",
-            lineNumber: 22,
-            columnNumber: 7
-        }, this)
-    }, void 0, false);
+                }, this))
+        ]
+    }, void 0, true, {
+        fileName: "src/components/TimerSelection/TimerSelection.js",
+        lineNumber: 20,
+        columnNumber: 5
+    }, this);
 }
 _s(TimerSelection, "coystqfxDSOVeqnL4fDj/4s+j1U=");
 _c = TimerSelection;
@@ -33618,7 +33615,7 @@ function SelectionHolder({ children  }) {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("fieldset", {
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("legend", {
-                    children: "Timer & Categories"
+                    children: "Categories & Timer"
                 }, void 0, false, {
                     fileName: "src/components/SelectionHolder/SelectionHolder.js",
                     lineNumber: 7,
