@@ -6,7 +6,6 @@ function LostBanner({ answer, handleRestart, textStatus }) {
   //Handle the value of promises
   const [definition, setDefinition] = React.useState('');
   const [error, setError] = React.useState(null);
-  console.log(definition);
 
   React.useEffect(() => {
     handleData(answer, setDefinition, setError);

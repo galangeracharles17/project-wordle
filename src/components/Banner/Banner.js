@@ -11,6 +11,7 @@ function Banner({ status, children, action, actionText }) {
       </button>
     );
   };
+
   return (
     <div className={`${status} banner`}>
       {children}

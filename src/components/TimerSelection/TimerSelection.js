@@ -1,6 +1,8 @@
 import React from 'react';
 
-function TimerSelection({ timer, setTimer, handleRestart }) {
+function TimerSelection({ setTimer, handleRestart }) {
+  const [selectTimer, setSelectTimer] = React.useState('');
+
   const timerValue = [
     { value: 30, timer: '30 Seconds' },
     { value: 60, timer: '1 Minute' },
@@ -9,28 +11,34 @@ function TimerSelection({ timer, setTimer, handleRestart }) {
     { value: '', timer: 'Cancel' },
   ];
 
+  // It prevents render loop
+  // Ensuring correct timing
+  React.useEffect(() => {
+    setTimer(selectTimer);
+  }, [setTimer, selectTimer]);
+
   return (
-    <div>
-      <fieldset>
-        <legend>Timer Selection</legend>
-        <select
-          id='timerSelection'
-          name='timer'
-          value={timer}
-          onChange={(event) => {
-            handleRestart();
-            return setTimer(event.target.value);
-          }}
-        >
-          <option value=''>{`Select Timer`}</option>
-          {timerValue.map(({ value, timer }, index) => (
-            <option key={index} value={value}>
-              {timer}
-            </option>
-          ))}
-        </select>
-      </fieldset>
-    </div>
+    <>
+      <select
+        id='timerSelection'
+        name='timer'
+        className='select-timer'
+        value={selectTimer}
+        onChange={(event) => {
+          handleRestart();
+          setSelectTimer(event.target.value);
+        }}
+      >
+        <option disabled value=''>
+          Select Timer
+        </option>
+        {timerValue.map(({ value, timer }, index) => (
+          <option key={index} value={value}>
+            {timer}
+          </option>
+        ))}
+      </select>
+    </>
   );
 }
 
