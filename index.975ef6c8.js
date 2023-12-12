@@ -27254,9 +27254,7 @@ function Game() {
     // Pick a random word on every pageload.
     const [answer, setAnswer] = (0, _reactDefault.default).useState(()=>(0, _utils.sample)((0, _data.WORDS)));
     // To make debugging easier, we'll log the solution in the console.
-    console.info({
-        answer
-    });
+    // console.info({ answer });
     const [answerCategory, setAnswerCategory] = (0, _reactDefault.default).useState("WORDS");
     const handleAnswerCategory = (category)=>{
         switch(category){
@@ -27320,6 +27318,7 @@ function Game() {
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _timerSelectionDefault.default), {
+                        timer: timer,
                         setTimer: setTimer,
                         handleRestart: handleRestart
                     }, void 0, false, {
@@ -27338,7 +27337,7 @@ function Game() {
                 answer: answer
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 92,
+                lineNumber: 96,
                 columnNumber: 7
             }, this),
             timer ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _timerDefault.default), {
@@ -27347,7 +27346,7 @@ function Game() {
                 gameStatus: gameStatus
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 94,
+                lineNumber: 98,
                 columnNumber: 9
             }, this) : null,
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _guessInputDefault.default), {
@@ -27355,7 +27354,7 @@ function Game() {
                 gameStatus: gameStatus
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 96,
+                lineNumber: 100,
                 columnNumber: 7
             }, this),
             gameStatus === "won" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _wonBannerDefault.default), {
@@ -27363,7 +27362,7 @@ function Game() {
                 handleRestart: handleRestart
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 98,
+                lineNumber: 102,
                 columnNumber: 9
             }, this),
             gameStatus === "won" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _wonConfettiDefault.default), {
@@ -27372,7 +27371,7 @@ function Game() {
                 gameStatus: gameStatus
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 102,
+                lineNumber: 106,
                 columnNumber: 9
             }, this),
             gameStatus === "lost" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _lostBannerDefault.default), {
@@ -27381,7 +27380,7 @@ function Game() {
                 textStatus: "Sorry, the correct answer is"
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 110,
+                lineNumber: 114,
                 columnNumber: 9
             }, this),
             timer !== 0 ? null : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _lostBannerDefault.default), {
@@ -27399,7 +27398,7 @@ function Game() {
                 }, void 0, true)
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 117,
+                lineNumber: 121,
                 columnNumber: 9
             }, this)
         ]
@@ -27416,7 +27415,7 @@ $RefreshReg$(_c, "Game");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../../utils":"en4he","../../data":"9kapS","../../constants.js":"3huJa","../GuessInput":"7KsIF","../GuessResults":"kxxIc","../WonBanner":"isERa","../LostBanner":"5Kimf","../TimerSelection":"3rxNv","../CategorySelection":"E4Qoz","../Timer":"bVMmE","../WonConfetti":"cZxnA","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../SelectionHolder":"gPtxh"}],"en4he":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","../../utils":"en4he","../../data":"9kapS","../../constants.js":"3huJa","../GuessInput":"7KsIF","../GuessResults":"kxxIc","../WonBanner":"isERa","../LostBanner":"5Kimf","../SelectionHolder":"gPtxh","../TimerSelection":"3rxNv","../CategorySelection":"E4Qoz","../Timer":"bVMmE","../WonConfetti":"cZxnA","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"en4he":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "sample", ()=>sample);
@@ -27543,9 +27542,6 @@ const COMPUTERS = [
     "THEME",
     "ETHER",
     "PINGS",
-    "CRISP",
-    "JUMBO",
-    "SNACK",
     "LATCH",
     "CRASH",
     "SPARK",
@@ -27555,9 +27551,11 @@ const COMPUTERS = [
     "BLINK",
     "START",
     "ROBOT",
-    "FLICK"
+    "FLICK",
+    "CLICK"
 ];
 const ANIMALS = [
+    "CANIS",
     "ZEBRA",
     "BIRDS",
     "TIGER",
@@ -32654,7 +32652,57 @@ Object.entries(HttpStatusCode).forEach(([key, value])=>{
 });
 exports.default = HttpStatusCode;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"3rxNv":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gPtxh":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>(0, _selectionHolderDefault.default));
+var _selectionHolder = require("./SelectionHolder");
+parcelHelpers.exportAll(_selectionHolder, exports);
+var _selectionHolderDefault = parcelHelpers.interopDefault(_selectionHolder);
+
+},{"./SelectionHolder":"ctrHU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"ctrHU":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$fff3 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$fff3.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxDevRuntime = require("react/jsx-dev-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+function SelectionHolder({ children  }) {
+    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("fieldset", {
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("legend", {
+                    children: "Categories & Timer"
+                }, void 0, false, {
+                    fileName: "src/components/SelectionHolder/SelectionHolder.js",
+                    lineNumber: 7,
+                    columnNumber: 9
+                }, this),
+                children
+            ]
+        }, void 0, true, {
+            fileName: "src/components/SelectionHolder/SelectionHolder.js",
+            lineNumber: 6,
+            columnNumber: 7
+        }, this)
+    }, void 0, false);
+}
+_c = SelectionHolder;
+exports.default = SelectionHolder;
+var _c;
+$RefreshReg$(_c, "SelectionHolder");
+
+  $parcel$ReactRefreshHelpers$fff3.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"3rxNv":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>(0, _timerSelectionDefault.default));
@@ -32675,7 +32723,7 @@ var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _s = $RefreshSig$();
-function TimerSelection({ setTimer , handleRestart  }) {
+function TimerSelection({ timer , setTimer , handleRestart  }) {
     _s();
     const [selectTimer, setSelectTimer] = (0, _reactDefault.default).useState("");
     const timerValue = [
@@ -32700,6 +32748,13 @@ function TimerSelection({ setTimer , handleRestart  }) {
             timer: "Cancel"
         }
     ];
+    (0, _reactDefault.default).useEffect(()=>{
+        if (timer === "") setTimer(selectTimer);
+    }, [
+        timer,
+        setTimer,
+        selectTimer
+    ]);
     // It prevents render loop
     // Ensuring correct timing
     (0, _reactDefault.default).useEffect(()=>{
@@ -32724,7 +32779,7 @@ function TimerSelection({ setTimer , handleRestart  }) {
                 children: "Select Timer"
             }, void 0, false, {
                 fileName: "src/components/TimerSelection/TimerSelection.js",
-                lineNumber: 30,
+                lineNumber: 34,
                 columnNumber: 7
             }, this),
             timerValue.map(({ value , timer  }, index)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -32732,17 +32787,17 @@ function TimerSelection({ setTimer , handleRestart  }) {
                     children: timer
                 }, index, false, {
                     fileName: "src/components/TimerSelection/TimerSelection.js",
-                    lineNumber: 34,
+                    lineNumber: 38,
                     columnNumber: 9
                 }, this))
         ]
     }, void 0, true, {
         fileName: "src/components/TimerSelection/TimerSelection.js",
-        lineNumber: 20,
+        lineNumber: 24,
         columnNumber: 5
     }, this);
 }
-_s(TimerSelection, "coystqfxDSOVeqnL4fDj/4s+j1U=");
+_s(TimerSelection, "gmOmbcHUB79OMDaE7mLsUhpkmuo=");
 _c = TimerSelection;
 exports.default = TimerSelection;
 var _c;
@@ -32799,6 +32854,7 @@ function CategorySelection({ handleAnswerCategory , setAnswerCategory , handleRe
             textValue: "Foods"
         }
     ];
+    // It waits for component and then set the value after render
     (0, _reactDefault.default).useEffect(()=>{
         setAnswerCategory(selectCategory);
     }, [
@@ -33590,57 +33646,7 @@ $RefreshReg$(_c, "WonConfetti");
     ]).default;
 });
 
-},{"34009e003b690bf5":"21dqq"}],"gPtxh":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "default", ()=>(0, _selectionHolderDefault.default));
-var _selectionHolder = require("./SelectionHolder");
-parcelHelpers.exportAll(_selectionHolder, exports);
-var _selectionHolderDefault = parcelHelpers.interopDefault(_selectionHolder);
-
-},{"./SelectionHolder":"ctrHU","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"ctrHU":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$fff3 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$fff3.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _jsxDevRuntime = require("react/jsx-dev-runtime");
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-function SelectionHolder({ children  }) {
-    return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("fieldset", {
-            children: [
-                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("legend", {
-                    children: "Categories & Timer"
-                }, void 0, false, {
-                    fileName: "src/components/SelectionHolder/SelectionHolder.js",
-                    lineNumber: 7,
-                    columnNumber: 9
-                }, this),
-                children
-            ]
-        }, void 0, true, {
-            fileName: "src/components/SelectionHolder/SelectionHolder.js",
-            lineNumber: 6,
-            columnNumber: 7
-        }, this)
-    }, void 0, false);
-}
-_c = SelectionHolder;
-exports.default = SelectionHolder;
-var _c;
-$RefreshReg$(_c, "SelectionHolder");
-
-  $parcel$ReactRefreshHelpers$fff3.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"cxSZo":[function(require,module,exports) {
+},{"34009e003b690bf5":"21dqq"}],"cxSZo":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "default", ()=>(0, _headerDefault.default));
