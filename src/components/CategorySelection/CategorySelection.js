@@ -13,7 +13,7 @@ function CategorySelection({
     { value: 'PLACES', textValue: 'Places' },
     { value: 'FOODS', textValue: 'Foods' },
   ];
-
+  // It waits for component and then set the value after render
   React.useEffect(() => {
     setAnswerCategory(selectCategory);
   }, [setAnswerCategory, selectCategory]);

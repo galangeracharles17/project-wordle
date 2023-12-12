@@ -1,6 +1,6 @@
 import React from 'react';
 
-function TimerSelection({ setTimer, handleRestart }) {
+function TimerSelection({ timer, setTimer, handleRestart }) {
   const [selectTimer, setSelectTimer] = React.useState('');
 
   const timerValue = [
@@ -10,12 +10,16 @@ function TimerSelection({ setTimer, handleRestart }) {
     { value: 180, timer: '3 Minutes' },
     { value: '', timer: 'Cancel' },
   ];
+  React.useEffect(() => {
+    if (timer === '') {
+      setTimer(selectTimer);
+    }
+  }, [timer, setTimer, selectTimer]);
   // It prevents render loop
   // Ensuring correct timing
   React.useEffect(() => {
     setTimer(selectTimer);
   }, [setTimer, selectTimer]);
-
   return (
     <select
       id='timerSelection'

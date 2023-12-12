@@ -21,7 +21,7 @@ function Game() {
   // Pick a random word on every pageload.
   const [answer, setAnswer] = React.useState(() => sample(WORDS));
   // To make debugging easier, we'll log the solution in the console.
-  console.info({ answer });
+  // console.info({ answer });
 
   const [answerCategory, setAnswerCategory] = React.useState('WORDS');
 
@@ -47,7 +47,6 @@ function Game() {
         break;
     }
   };
-
   // Make an useState array to loop on GuessResults Component
   const [guess, setGuess] = React.useState([]);
   // It will handle the guess items on GuessInput Component and will create a brand new array
@@ -76,6 +75,7 @@ function Game() {
   };
   //Lift the state time from TimerSelection
   const [timer, setTimer] = React.useState('');
+
   //Confetti State
   const [showConfetti, setShowConfetti] = React.useState(true);
 
@@ -87,7 +87,11 @@ function Game() {
           setAnswerCategory={setAnswerCategory}
           handleRestart={handleRestart}
         />
-        <TimerSelection setTimer={setTimer} handleRestart={handleRestart} />
+        <TimerSelection
+          timer={timer}
+          setTimer={setTimer}
+          handleRestart={handleRestart}
+        />
       </SelectionHolder>
       <GuessResults guess={guess} answer={answer} />
       {timer ? (

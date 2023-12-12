@@ -70,9 +70,6 @@ const COMPUTERS = [
   'THEME',
   'ETHER',
   'PINGS',
-  'CRISP',
-  'JUMBO',
-  'SNACK',
   'LATCH',
   'CRASH',
   'SPARK',
@@ -83,9 +80,11 @@ const COMPUTERS = [
   'START',
   'ROBOT',
   'FLICK',
+  'CLICK',
 ];
 
 const ANIMALS = [
+  'CANIS',
   'ZEBRA',
   'BIRDS',
   'TIGER',
