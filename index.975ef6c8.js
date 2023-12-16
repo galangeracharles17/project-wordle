@@ -27284,21 +27284,16 @@ function Game() {
     const [guess, setGuess] = (0, _reactDefault.default).useState([]);
     // It will handle the guess items on GuessInput Component and will create a brand new array
     const [gameStatus, setGameStatus] = (0, _reactDefault.default).useState("running");
-    const handleAddGuess = (0, _reactDefault.default).useCallback(()=>{
-        return (guessParams)=>{
-            const newGuess = guessParams;
-            const nextGuess = [
-                ...guess,
-                newGuess
-            ];
-            if (guessParams === answer) setGameStatus("won");
-            else if (nextGuess.length >= (0, _constantsJs.NUM_OF_GUESSES_ALLOWED)) setGameStatus("lost");
-            setGuess(nextGuess);
-        };
-    }, [
-        answer,
-        guess
-    ]);
+    const handleAddGuess = (guessParams)=>{
+        const newGuess = guessParams;
+        const nextGuess = [
+            ...guess,
+            newGuess
+        ];
+        if (guessParams === answer) setGameStatus("won");
+        else if (nextGuess.length >= (0, _constantsJs.NUM_OF_GUESSES_ALLOWED)) setGameStatus("lost");
+        setGuess(nextGuess);
+    };
     const handleRestart = ()=>{
         handleAnswerCategory(answerCategory);
         // setAnswer(sample(WORDS));
@@ -27321,7 +27316,7 @@ function Game() {
                         handleRestart: handleRestart
                     }, void 0, false, {
                         fileName: "src/components/Game/Game.js",
-                        lineNumber: 87,
+                        lineNumber: 85,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _timerSelectionDefault.default), {
@@ -27330,13 +27325,13 @@ function Game() {
                         handleRestart: handleRestart
                     }, void 0, false, {
                         fileName: "src/components/Game/Game.js",
-                        lineNumber: 92,
+                        lineNumber: 90,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 86,
+                lineNumber: 84,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _guessResultsDefault.default), {
@@ -27344,7 +27339,7 @@ function Game() {
                 answer: answer
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 98,
+                lineNumber: 96,
                 columnNumber: 7
             }, this),
             timer ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _timerDefault.default), {
@@ -27353,7 +27348,7 @@ function Game() {
                 gameStatus: gameStatus
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 100,
+                lineNumber: 98,
                 columnNumber: 9
             }, this) : null,
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _guessInputDefault.default), {
@@ -27361,7 +27356,7 @@ function Game() {
                 gameStatus: gameStatus
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 102,
+                lineNumber: 100,
                 columnNumber: 7
             }, this),
             gameStatus === "won" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _wonBannerDefault.default), {
@@ -27369,7 +27364,7 @@ function Game() {
                 handleRestart: handleRestart
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 104,
+                lineNumber: 102,
                 columnNumber: 9
             }, this),
             gameStatus === "won" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _wonConfettiDefault.default), {
@@ -27378,7 +27373,7 @@ function Game() {
                 gameStatus: gameStatus
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 108,
+                lineNumber: 106,
                 columnNumber: 9
             }, this),
             gameStatus === "lost" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _lostBannerDefault.default), {
@@ -27387,7 +27382,7 @@ function Game() {
                 textStatus: "Sorry, the correct answer is"
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 116,
+                lineNumber: 114,
                 columnNumber: 9
             }, this),
             timer !== 0 ? null : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _lostBannerDefault.default), {
@@ -27405,13 +27400,13 @@ function Game() {
                 }, void 0, true)
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 123,
+                lineNumber: 121,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true);
 }
-_s(Game, "n68NDibiMPFwls5xttHPZN+z8LQ=");
+_s(Game, "jpHT7rtyMnXvJgzHo2efRi7jlSQ=");
 _c = Game;
 exports.default = Game;
 var _c;
@@ -28222,12 +28217,15 @@ function LostBanner({ answer , handleRestart , textStatus  }) {
     //Handle the value of promises
     const [definition, setDefinition] = (0, _reactDefault.default).useState("");
     const [error, setError] = (0, _reactDefault.default).useState(null);
+    const [status, setStatus] = (0, _reactDefault.default).useState("idle");
+    // console.log(status);
     (0, _reactDefault.default).useEffect(()=>{
-        (0, _apiData.handleData)(answer, setDefinition, setError);
+        (0, _apiData.handleData)(answer, setDefinition, setError, setStatus);
     }, [
         answer,
         setDefinition,
-        setError
+        setError,
+        setStatus
     ]);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _bannerDefault.default), {
         status: "sad",
@@ -28241,7 +28239,7 @@ function LostBanner({ answer , handleRestart , textStatus  }) {
                     children: answer
                 }, void 0, false, {
                     fileName: "src/components/LostBanner/LostBanner.js",
-                    lineNumber: 17,
+                    lineNumber: 19,
                     columnNumber: 22
                 }, this),
                 ".",
@@ -28253,23 +28251,41 @@ function LostBanner({ answer , handleRestart , textStatus  }) {
                     children: "Meaning"
                 }, void 0, false, {
                     fileName: "src/components/LostBanner/LostBanner.js",
-                    lineNumber: 18,
+                    lineNumber: 20,
                     columnNumber: 9
                 }, this),
-                error ? error : definition
+                status === "loading" ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                    children: "Loading..."
+                }, void 0, false, {
+                    fileName: "src/components/LostBanner/LostBanner.js",
+                    lineNumber: 21,
+                    columnNumber: 33
+                }, this) : "",
+                status === "error" ? error : "",
+                status === "success" ? definition : "",
+                status === "undefined" ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                    children: [
+                        "Sorry, cannot find the meaning ",
+                        `:<`
+                    ]
+                }, void 0, true, {
+                    fileName: "src/components/LostBanner/LostBanner.js",
+                    lineNumber: 25,
+                    columnNumber: 11
+                }, this) : ""
             ]
         }, void 0, true, {
             fileName: "src/components/LostBanner/LostBanner.js",
-            lineNumber: 16,
+            lineNumber: 18,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "src/components/LostBanner/LostBanner.js",
-        lineNumber: 15,
+        lineNumber: 17,
         columnNumber: 5
     }, this);
 }
-_s(LostBanner, "erLc/MocGmmZdp1/KFyICF+ubaQ=");
+_s(LostBanner, "CJLqEAt7KN3T8eHA70VuE5o9VwQ=");
 _c = LostBanner;
 exports.default = LostBanner;
 var _c;
@@ -28286,16 +28302,19 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "handleData", ()=>handleData);
 var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
-const handleData = async (answer, setResolve, setReject)=>{
+const handleData = async (answer, setResolve, setReject, setStat)=>{
     const baseURL = `https://api.dictionaryapi.dev/api/v2/entries/en/${answer}`;
     try {
+        setStat("loading");
         const request = await (0, _axiosDefault.default).get(baseURL);
-        const data = request.data[0].meanings[0].definitions[0].definition;
+        const data = request?.data[0]?.meanings[0]?.definitions[0]?.definition;
+        setStat(data !== undefined || null ? "success" : "undefined");
         setResolve(data);
     // console.log(data);
     } catch (reject) {
         console.log(`Error Timeout ${reject}`);
-        setReject("Meaning is not available. Sorry :<");
+        setStat("error");
+        setReject("Something went wrong");
     }
 };
 
@@ -32968,8 +32987,7 @@ function Timer({ timer , setTimer , gameStatus  }) {
                 border: "2px solid hsl(0deg 70% 45%)",
                 borderRadius: "4px",
                 padding: "8px",
-                color: "hsl(0deg 70% 45%)",
-                boxShadow: "1px 1px 2px 1px var(--color-gray-500)"
+                color: "hsl(0deg 70% 45%)"
             },
             children: (0, _gameHelpers.countdown)(timer)
         }, void 0, false, {
