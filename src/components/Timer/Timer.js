@@ -29,7 +29,6 @@ function Timer({ timer, setTimer, gameStatus }) {
           borderRadius: '4px',
           padding: '8px',
           color: 'hsl(0deg 70% 45%)',
-          boxShadow: '1px 1px 2px 1px var(--color-gray-500)',
         }}
       >
         {countdown(timer)}

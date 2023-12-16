@@ -52,20 +52,18 @@ function Game() {
   // It will handle the guess items on GuessInput Component and will create a brand new array
   const [gameStatus, setGameStatus] = React.useState('running');
 
-  const handleAddGuess = React.useCallback(() => {
-    return (guessParams) => {
-      const newGuess = guessParams;
-      const nextGuess = [...guess, newGuess];
+  const handleAddGuess = (guessParams) => {
+    const newGuess = guessParams;
+    const nextGuess = [...guess, newGuess];
 
-      if (guessParams === answer) {
-        setGameStatus('won');
-      } else if (nextGuess.length >= NUM_OF_GUESSES_ALLOWED) {
-        setGameStatus('lost');
-      }
+    if (guessParams === answer) {
+      setGameStatus('won');
+    } else if (nextGuess.length >= NUM_OF_GUESSES_ALLOWED) {
+      setGameStatus('lost');
+    }
 
-      setGuess(nextGuess);
-    };
-  }, [answer, guess]);
+    setGuess(nextGuess);
+  };
 
   const handleRestart = () => {
     handleAnswerCategory(answerCategory);
