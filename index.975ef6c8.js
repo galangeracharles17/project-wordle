@@ -27254,7 +27254,9 @@ function Game() {
     // Pick a random word on every pageload.
     const [answer, setAnswer] = (0, _reactDefault.default).useState(()=>(0, _utils.sample)((0, _data.WORDS)));
     // To make debugging easier, we'll log the solution in the console.
-    // console.info({ answer });
+    console.info({
+        answer
+    });
     const [answerCategory, setAnswerCategory] = (0, _reactDefault.default).useState("WORDS");
     const handleAnswerCategory = (category)=>{
         switch(category){
@@ -27282,16 +27284,21 @@ function Game() {
     const [guess, setGuess] = (0, _reactDefault.default).useState([]);
     // It will handle the guess items on GuessInput Component and will create a brand new array
     const [gameStatus, setGameStatus] = (0, _reactDefault.default).useState("running");
-    const handleAddGuess = (guessParams)=>{
-        const newGuess = guessParams;
-        const nextGuess = [
-            ...guess,
-            newGuess
-        ];
-        if (guessParams === answer) setGameStatus("won");
-        else if (nextGuess.length >= (0, _constantsJs.NUM_OF_GUESSES_ALLOWED)) setGameStatus("lost");
-        setGuess(nextGuess);
-    };
+    const handleAddGuess = (0, _reactDefault.default).useCallback(()=>{
+        return (guessParams)=>{
+            const newGuess = guessParams;
+            const nextGuess = [
+                ...guess,
+                newGuess
+            ];
+            if (guessParams === answer) setGameStatus("won");
+            else if (nextGuess.length >= (0, _constantsJs.NUM_OF_GUESSES_ALLOWED)) setGameStatus("lost");
+            setGuess(nextGuess);
+        };
+    }, [
+        answer,
+        guess
+    ]);
     const handleRestart = ()=>{
         handleAnswerCategory(answerCategory);
         // setAnswer(sample(WORDS));
@@ -27314,7 +27321,7 @@ function Game() {
                         handleRestart: handleRestart
                     }, void 0, false, {
                         fileName: "src/components/Game/Game.js",
-                        lineNumber: 85,
+                        lineNumber: 87,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _timerSelectionDefault.default), {
@@ -27323,13 +27330,13 @@ function Game() {
                         handleRestart: handleRestart
                     }, void 0, false, {
                         fileName: "src/components/Game/Game.js",
-                        lineNumber: 90,
+                        lineNumber: 92,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 84,
+                lineNumber: 86,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _guessResultsDefault.default), {
@@ -27337,7 +27344,7 @@ function Game() {
                 answer: answer
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 96,
+                lineNumber: 98,
                 columnNumber: 7
             }, this),
             timer ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _timerDefault.default), {
@@ -27346,7 +27353,7 @@ function Game() {
                 gameStatus: gameStatus
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 98,
+                lineNumber: 100,
                 columnNumber: 9
             }, this) : null,
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _guessInputDefault.default), {
@@ -27354,7 +27361,7 @@ function Game() {
                 gameStatus: gameStatus
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 100,
+                lineNumber: 102,
                 columnNumber: 7
             }, this),
             gameStatus === "won" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _wonBannerDefault.default), {
@@ -27362,7 +27369,7 @@ function Game() {
                 handleRestart: handleRestart
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 102,
+                lineNumber: 104,
                 columnNumber: 9
             }, this),
             gameStatus === "won" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _wonConfettiDefault.default), {
@@ -27371,7 +27378,7 @@ function Game() {
                 gameStatus: gameStatus
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 106,
+                lineNumber: 108,
                 columnNumber: 9
             }, this),
             gameStatus === "lost" && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _lostBannerDefault.default), {
@@ -27380,7 +27387,7 @@ function Game() {
                 textStatus: "Sorry, the correct answer is"
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 114,
+                lineNumber: 116,
                 columnNumber: 9
             }, this),
             timer !== 0 ? null : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _lostBannerDefault.default), {
@@ -27398,13 +27405,13 @@ function Game() {
                 }, void 0, true)
             }, void 0, false, {
                 fileName: "src/components/Game/Game.js",
-                lineNumber: 121,
+                lineNumber: 123,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true);
 }
-_s(Game, "jpHT7rtyMnXvJgzHo2efRi7jlSQ=");
+_s(Game, "n68NDibiMPFwls5xttHPZN+z8LQ=");
 _c = Game;
 exports.default = Game;
 var _c;
@@ -27712,9 +27719,10 @@ function GuessInput({ handleAddGuess , gameStatus  }) {
 }
 _s(GuessInput, "Bi3/n+7t2rf4ErPKsC+2HJwhXyM=");
 _c = GuessInput;
-exports.default = GuessInput;
-var _c;
+exports.default = /*#__PURE__*/ _c1 = (0, _reactDefault.default).memo(GuessInput);
+var _c, _c1;
 $RefreshReg$(_c, "GuessInput");
+$RefreshReg$(_c1, "%default%");
 
   $parcel$ReactRefreshHelpers$b46b.postlude(module);
 } finally {
@@ -27903,9 +27911,10 @@ function GuessResults({ guess , answer  }) {
     }, this);
 }
 _c = GuessResults;
-exports.default = GuessResults;
-var _c;
+exports.default = /*#__PURE__*/ _c1 = (0, _reactDefault.default).memo(GuessResults);
+var _c, _c1;
 $RefreshReg$(_c, "GuessResults");
+$RefreshReg$(_c1, "%default%");
 
   $parcel$ReactRefreshHelpers$e9e2.postlude(module);
 } finally {
@@ -32749,6 +32758,7 @@ function TimerSelection({ timer , setTimer , handleRestart  }) {
         }
     ];
     (0, _reactDefault.default).useEffect(()=>{
+        if (timer) return;
         if (timer === "") setTimer(selectTimer);
     }, [
         timer,
@@ -32758,6 +32768,7 @@ function TimerSelection({ timer , setTimer , handleRestart  }) {
     // It prevents render loop
     // Ensuring correct timing
     (0, _reactDefault.default).useEffect(()=>{
+        if (!selectTimer) return;
         setTimer(selectTimer);
     }, [
         setTimer,
@@ -32779,7 +32790,7 @@ function TimerSelection({ timer , setTimer , handleRestart  }) {
                 children: "Select Timer"
             }, void 0, false, {
                 fileName: "src/components/TimerSelection/TimerSelection.js",
-                lineNumber: 34,
+                lineNumber: 41,
                 columnNumber: 7
             }, this),
             timerValue.map(({ value , timer  }, index)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -32787,13 +32798,13 @@ function TimerSelection({ timer , setTimer , handleRestart  }) {
                     children: timer
                 }, index, false, {
                     fileName: "src/components/TimerSelection/TimerSelection.js",
-                    lineNumber: 38,
+                    lineNumber: 45,
                     columnNumber: 9
                 }, this))
         ]
     }, void 0, true, {
         fileName: "src/components/TimerSelection/TimerSelection.js",
-        lineNumber: 24,
+        lineNumber: 31,
         columnNumber: 5
     }, this);
 }
@@ -32856,6 +32867,8 @@ function CategorySelection({ handleAnswerCategory , setAnswerCategory , handleRe
     ];
     // It waits for component and then set the value after render
     (0, _reactDefault.default).useEffect(()=>{
+        //To avoid unnecessary invocation of useEffect | Early return
+        if (!selectCategory) return;
         setAnswerCategory(selectCategory);
     }, [
         setAnswerCategory,
@@ -32878,7 +32891,7 @@ function CategorySelection({ handleAnswerCategory , setAnswerCategory , handleRe
                 children: "Select Category"
             }, void 0, false, {
                 fileName: "src/components/CategorySelection/CategorySelection.js",
-                lineNumber: 36,
+                lineNumber: 41,
                 columnNumber: 7
             }, this),
             categoryValue.map(({ value , textValue  }, index)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -32886,13 +32899,13 @@ function CategorySelection({ handleAnswerCategory , setAnswerCategory , handleRe
                     children: textValue
                 }, index, false, {
                     fileName: "src/components/CategorySelection/CategorySelection.js",
-                    lineNumber: 40,
+                    lineNumber: 45,
                     columnNumber: 9
                 }, this))
         ]
     }, void 0, true, {
         fileName: "src/components/CategorySelection/CategorySelection.js",
-        lineNumber: 22,
+        lineNumber: 27,
         columnNumber: 5
     }, this);
 }
@@ -32952,20 +32965,21 @@ function Timer({ timer , setTimer , gameStatus  }) {
         },
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
             style: {
-                backgroundColor: "hsl(0deg 70% 45%)",
+                border: "2px solid hsl(0deg 70% 45%)",
                 borderRadius: "4px",
                 padding: "8px",
-                color: "white"
+                color: "hsl(0deg 70% 45%)",
+                boxShadow: "1px 1px 2px 1px var(--color-gray-500)"
             },
             children: (0, _gameHelpers.countdown)(timer)
         }, void 0, false, {
             fileName: "src/components/Timer/Timer.js",
-            lineNumber: 27,
+            lineNumber: 26,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "src/components/Timer/Timer.js",
-        lineNumber: 21,
+        lineNumber: 20,
         columnNumber: 5
     }, this);
 }
@@ -33669,8 +33683,74 @@ var _reactDefault = parcelHelpers.interopDefault(_react);
 function Header() {
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("header", {
         children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h1", {
-            children: "Word Game"
-        }, void 0, false, {
+            children: [
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                    className: "wordle-header",
+                    children: "W"
+                }, void 0, false, {
+                    fileName: "src/components/Header/Header.js",
+                    lineNumber: 7,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                    className: "wordle-header",
+                    children: "o"
+                }, void 0, false, {
+                    fileName: "src/components/Header/Header.js",
+                    lineNumber: 8,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                    className: "wordle-header",
+                    children: "r"
+                }, void 0, false, {
+                    fileName: "src/components/Header/Header.js",
+                    lineNumber: 9,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                    className: "wordle-header",
+                    children: "d"
+                }, void 0, false, {
+                    fileName: "src/components/Header/Header.js",
+                    lineNumber: 10,
+                    columnNumber: 9
+                }, this),
+                " ",
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                    className: "wordle-header",
+                    children: "G"
+                }, void 0, false, {
+                    fileName: "src/components/Header/Header.js",
+                    lineNumber: 11,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                    className: "wordle-header",
+                    children: "a"
+                }, void 0, false, {
+                    fileName: "src/components/Header/Header.js",
+                    lineNumber: 12,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                    className: "wordle-header",
+                    children: "m"
+                }, void 0, false, {
+                    fileName: "src/components/Header/Header.js",
+                    lineNumber: 13,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
+                    className: "wordle-header",
+                    children: "e"
+                }, void 0, false, {
+                    fileName: "src/components/Header/Header.js",
+                    lineNumber: 14,
+                    columnNumber: 9
+                }, this)
+            ]
+        }, void 0, true, {
             fileName: "src/components/Header/Header.js",
             lineNumber: 6,
             columnNumber: 7

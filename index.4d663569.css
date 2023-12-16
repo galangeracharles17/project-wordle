@@ -1,6 +1,6 @@
 html {
   --game-spacing: 1.2rem;
-  --header-height: 4rem;
+  --header-height: 4.5rem;
   --color-success: #17824d;
   --color-warning: #998000;
   --color-error: #c32222;
@@ -55,7 +55,17 @@ h1 {
   font-size: 2rem;
   line-height: var(--header-height);
   text-align: center;
+  background-color: #fefefe;
   flex: 1;
+}
+
+.wordle-header {
+  text-transform: uppercase;
+  box-shadow: 1px 4px 5px 1px var(--color-gray-500);
+  background-color: #fff;
+  border-radius: 4px;
+  margin: 1px;
+  padding: 4px 8px;
 }
 
 @media (width <= 25rem) {
@@ -179,12 +189,21 @@ h1 {
   color: #fff;
 }
 
+.btn-restart-happy {
+  background-color: var(--color-error);
+  border: 1px solid #fff;
+  border-radius: .5rem;
+  margin-top: .5rem;
+  padding: .5rem;
+}
+
 .btn-restart-happy:hover {
   background-color: #ad1f1f;
 }
 
 .btn-restart-sad {
   background-color: var(--color-success);
+  border: 1px solid #fff;
   border-radius: .5rem;
   margin-top: .8rem;
   padding: .5rem;
@@ -192,13 +211,6 @@ h1 {
 
 .btn-restart-sad:hover {
   background-color: #0f5733;
-}
-
-.btn-restart-happy {
-  background-color: var(--color-error);
-  border-radius: .5rem;
-  margin-top: .8rem;
-  padding: .5rem;
 }
 
 fieldset {
