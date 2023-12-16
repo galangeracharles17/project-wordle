@@ -18,4 +18,4 @@ function GuessResults({ guess, answer }) {
   );
 }
 
-export default GuessResults;
+export default React.memo(GuessResults);

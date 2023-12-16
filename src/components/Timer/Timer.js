@@ -10,7 +10,6 @@ function Timer({ timer, setTimer, gameStatus }) {
         const nextTimer = timer - 1;
         setTimer(nextTimer);
       }, 1000);
-
       return () => clearInterval(timerId);
     } else {
       return () => clearInterval(timerId);
@@ -26,10 +25,11 @@ function Timer({ timer, setTimer, gameStatus }) {
     >
       <span
         style={{
-          backgroundColor: 'hsl(0deg 70% 45%)',
+          border: '2px solid hsl(0deg 70% 45%)',
           borderRadius: '4px',
           padding: '8px',
-          color: 'white',
+          color: 'hsl(0deg 70% 45%)',
+          boxShadow: '1px 1px 2px 1px var(--color-gray-500)',
         }}
       >
         {countdown(timer)}

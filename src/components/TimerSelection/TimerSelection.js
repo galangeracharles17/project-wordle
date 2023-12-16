@@ -11,6 +11,10 @@ function TimerSelection({ timer, setTimer, handleRestart }) {
     { value: '', timer: 'Cancel' },
   ];
   React.useEffect(() => {
+    if (timer) {
+      return;
+    }
+
     if (timer === '') {
       setTimer(selectTimer);
     }
@@ -18,6 +22,9 @@ function TimerSelection({ timer, setTimer, handleRestart }) {
   // It prevents render loop
   // Ensuring correct timing
   React.useEffect(() => {
+    if (!selectTimer) {
+      return;
+    }
     setTimer(selectTimer);
   }, [setTimer, selectTimer]);
   return (

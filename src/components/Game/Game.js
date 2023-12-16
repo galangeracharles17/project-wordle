@@ -21,7 +21,7 @@ function Game() {
   // Pick a random word on every pageload.
   const [answer, setAnswer] = React.useState(() => sample(WORDS));
   // To make debugging easier, we'll log the solution in the console.
-  // console.info({ answer });
+  console.info({ answer });
 
   const [answerCategory, setAnswerCategory] = React.useState('WORDS');
 
@@ -52,18 +52,20 @@ function Game() {
   // It will handle the guess items on GuessInput Component and will create a brand new array
   const [gameStatus, setGameStatus] = React.useState('running');
 
-  const handleAddGuess = (guessParams) => {
-    const newGuess = guessParams;
-    const nextGuess = [...guess, newGuess];
+  const handleAddGuess = React.useCallback(() => {
+    return (guessParams) => {
+      const newGuess = guessParams;
+      const nextGuess = [...guess, newGuess];
 
-    if (guessParams === answer) {
-      setGameStatus('won');
-    } else if (nextGuess.length >= NUM_OF_GUESSES_ALLOWED) {
-      setGameStatus('lost');
-    }
+      if (guessParams === answer) {
+        setGameStatus('won');
+      } else if (nextGuess.length >= NUM_OF_GUESSES_ALLOWED) {
+        setGameStatus('lost');
+      }
 
-    setGuess(nextGuess);
-  };
+      setGuess(nextGuess);
+    };
+  }, [answer, guess]);
 
   const handleRestart = () => {
     handleAnswerCategory(answerCategory);

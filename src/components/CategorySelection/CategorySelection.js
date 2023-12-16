@@ -15,6 +15,11 @@ function CategorySelection({
   ];
   // It waits for component and then set the value after render
   React.useEffect(() => {
+    //To avoid unnecessary invocation of useEffect | Early return
+    if (!selectCategory) {
+      return;
+    }
+
     setAnswerCategory(selectCategory);
   }, [setAnswerCategory, selectCategory]);
 

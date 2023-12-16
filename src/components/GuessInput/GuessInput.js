@@ -36,4 +36,4 @@ function GuessInput({ handleAddGuess, gameStatus }) {
   );
 }
 
-export default GuessInput;
+export default React.memo(GuessInput);
