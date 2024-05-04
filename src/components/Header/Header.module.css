@@ -1,0 +1,44 @@
+.contentWrapper {
+    display: flex;
+    gap: 20px;
+    overflow-y: auto
+}
+
+/* Modal view */
+.guessModal {
+    aspect-ratio: 1;
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.instructionContainer {
+    flex: 4;
+    background: #fefefe;
+}
+
+.instructionContainer>ul {
+    margin-bottom: 15px;
+}
+
+.rulesContent {
+    width: 50%;
+    padding-left: 30px;
+}
+
+
+@media (max-width: 600px) {
+    .contentWrapper {
+        flex-direction: column;
+        padding: 10px 20px 10px 20px;
+    }
+
+    .guessModal {
+        order: 1;
+    }
+
+    .rulesContent {
+        padding-left: 15px;
+    }
+}

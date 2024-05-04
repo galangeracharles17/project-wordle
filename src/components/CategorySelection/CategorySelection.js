@@ -13,6 +13,7 @@ function CategorySelection({
     { value: 'PLACES', textValue: 'Places' },
     { value: 'FOODS', textValue: 'Foods' },
   ];
+
   // It waits for component and then set the value after render
   React.useEffect(() => {
     //To avoid unnecessary invocation of useEffect | Early return
@@ -29,9 +30,7 @@ function CategorySelection({
       value={selectCategory}
       onChange={(event) => {
         handleRestart();
-
         const nextSelectCategory = event.target.value;
-
         setSelectCategory(nextSelectCategory);
 
         handleAnswerCategory(nextSelectCategory);
@@ -39,7 +38,7 @@ function CategorySelection({
     >
       {' '}
       <option disabled value=''>
-        Select Category
+        Category
       </option>
       {categoryValue.map(({ value, textValue }, index) => (
         <option key={index} value={value}>

@@ -22,7 +22,7 @@ function LostBanner({ answer, handleRestart, textStatus }) {
         {status === 'error' ? error : ''}
         {status === 'success' ? definition : ''}
         {status === 'undefined' ? (
-          <p>Sorry, cannot find the meaning {`:<`}</p>
+          <p>{`Sorry, cannot find the meaning of ${answer}`}</p>
         ) : (
           ''
         )}

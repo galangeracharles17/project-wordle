@@ -20,10 +20,15 @@ import WonConfetti from '../WonConfetti';
 function Game() {
   // Pick a random word on every pageload.
   const [answer, setAnswer] = React.useState(() => sample(WORDS));
-  // To make debugging easier, we'll log the solution in the console.
-  console.info({ answer });
-
   const [answerCategory, setAnswerCategory] = React.useState('WORDS');
+
+  // Make a useState array to loop on GuessResults Component
+  const [guess, setGuess] = React.useState([]);
+  //Lift the state time from TimerSelection
+  const [timer, setTimer] = React.useState('');
+
+  const [gameStatus, setGameStatus] = React.useState('running');
+  const [showConfetti, setShowConfetti] = React.useState(true);
 
   const handleAnswerCategory = (category) => {
     switch (category) {
@@ -47,10 +52,6 @@ function Game() {
         break;
     }
   };
-  // Make an useState array to loop on GuessResults Component
-  const [guess, setGuess] = React.useState([]);
-  // It will handle the guess items on GuessInput Component and will create a brand new array
-  const [gameStatus, setGameStatus] = React.useState('running');
 
   const handleAddGuess = (guessParams) => {
     const newGuess = guessParams;
@@ -65,6 +66,7 @@ function Game() {
     setGuess(nextGuess);
   };
 
+  // restart the game
   const handleRestart = () => {
     handleAnswerCategory(answerCategory);
     // setAnswer(sample(WORDS));
@@ -73,12 +75,9 @@ function Game() {
     setTimer('');
     setShowConfetti(true);
   };
-  //Lift the state time from TimerSelection
-  const [timer, setTimer] = React.useState('');
 
-  //Confetti State
-  const [showConfetti, setShowConfetti] = React.useState(true);
-
+  // answer for debugging
+  // console.info({ answer });
   return (
     <>
       <SelectionHolder>
@@ -93,15 +92,17 @@ function Game() {
           handleRestart={handleRestart}
         />
       </SelectionHolder>
+
       <GuessResults guess={guess} answer={answer} />
+      {/* timer countdown */}
       {timer ? (
         <Timer timer={timer} setTimer={setTimer} gameStatus={gameStatus} />
       ) : null}
       <GuessInput handleAddGuess={handleAddGuess} gameStatus={gameStatus} />
+
       {gameStatus === 'won' && (
         <WonBanner answer={guess.length} handleRestart={handleRestart} />
       )}
-
       {gameStatus === 'won' && (
         <WonConfetti
           showConfetti={showConfetti}
@@ -117,6 +118,7 @@ function Game() {
           textStatus='Sorry, the correct answer is'
         />
       )}
+      {/* if timer reach 0 render lost banner */}
       {timer !== 0 ? null : (
         <LostBanner
           answer={answer}
